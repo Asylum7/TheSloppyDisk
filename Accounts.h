@@ -7,7 +7,7 @@
 #include<fstream>
 using namespace std;
 
-//struct to hold all the users account information
+//struct to hold all the users account information...
 struct accInfo
 {
 	string name;
