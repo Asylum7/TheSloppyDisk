@@ -7,12 +7,12 @@
 #include<fstream>
 using namespace std;
 
-//struct to hold all the users account information...
+//struct to hold all the users account information
 struct accInfo
 {
 	string name;
 	string address;
-	string ciry;
+	string city;
 	string state;
 	int    zip;
 	int    theirInterest;
@@ -42,10 +42,13 @@ public:
 	void CloseAccounts();
 	//returns the current total number of accounts
 	int  GetTotAccounts();
-	//returns true if passed in string matched username or password in queue
+	//returns true if passed in string matches username AND password in list
 	bool CheckLogin(string username, string password);
 	//displays the current contents of the queue
 	void Print();
+	//returns true if the passed in string matches username in list
+	bool CheckUsername(string username);
+
 
 private:
 	vector<accInfo> accounts;

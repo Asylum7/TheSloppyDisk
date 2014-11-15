@@ -5,11 +5,11 @@ Accounts::Accounts()
 {
 	string name;
 	string address;
-	string ciry;
+	string city;
 	string state;
-	int    zip;
-	int    theirInterest;
-	int    ourInterest;
+	int    zip = 0;
+	int    theirInterest = 0;
+	int    ourInterest = 0;
 	bool   adminStatus;
 	string username;
 	string password;
@@ -19,12 +19,30 @@ Accounts::Accounts()
 	inFile.open("accountInformation.txt");
 
 	//has created a queue of account names and passwords
-	while(!inFile.eof())
+	while(inFile)
 	{
 		//incrementing the total number of accounts
 		totalAccounts++;
 
-		//taking in user address
+		//taking in user address information
+		getline(inFile, name);
+		getline(inFile, address);
+		getline(inFile, city);
+		getline(inFile, state);
+		inFile >> zip;
+		inFile.ignore(10000, '\n');
+
+		//taking in the users interest level
+		inFile >> theirInterest;
+		inFile.ignore(10000, '\n');
+
+		//taking in our interest level, it's been assigned yet
+		inFile >> ourInterest;
+		inFile.ignore(10000, '\n');
+
+		//Assigning admin status
+		inFile >> adminStatus;
+		inFile.ignore(10000, '\n');
 
 
 		//taking in the username and and password from the input file
@@ -33,55 +51,23 @@ Accounts::Accounts()
 
 		//creating new instance of accInfo struct to fill with data
 		accInfo nextAccount;
-		nextAccount.username = fileUsername;
-		nextAccount.password = filePassword;
+		nextAccount.name          = name;
+		nextAccount.address       = address;
+		nextAccount.city          = city;
+		nextAccount.state         = state;
+		nextAccount.zip			  = zip;
+		nextAccount.theirInterest = theirInterest;
+		nextAccount.ourInterest   = ourInterest;
+		nextAccount.adminStatus   = adminStatus;
+		nextAccount.username      = username;
+		nextAccount.password      = password;
 
 		accounts.push_back(nextAccount);
+		inFile.ignore(10000, '\n');
 	}//END - while(inFile)
 	//closing the input file
 	inFile.close();
 }//END - Default Constructor
-
-
-Accounts::Accounts(int i)
-{
-
-	cout << "Hello";
-
-	string fileUsername;
-	string filePassword;
-	totalAccounts = 0;
-
-	ifstream inFile;
-	inFile.open("accountInformation.txt");
-
-	//has created a queue of account names and passwords
-	while(!inFile.eof())
-	{
-		//incrementing the total number of accounts
-		totalAccounts++;
-
-		//taking in the username and and password from the input file
-		getline(inFile, fileUsername);
-		getline(inFile, filePassword);
-
-		//creating new instance of accInfo struct to fill with data
-		accInfo nextAccount;
-		nextAccount.username = fileUsername;
-		nextAccount.password = filePassword;
-
-		accounts.push_back(nextAccount);
-
-	}//END - while(inFile)
-
-	inFile.close();
-
-
-
-
-
-}
-
 
 //default destructor
 Accounts::~Accounts(){}
@@ -106,31 +92,47 @@ void Accounts::SignUp()
 
 	do
 	{
-		//prompting for username, password, and confirm password
-		cout << "Please enter a username: ";
-		getline(cin, username);
-		cout << "Please enter a password: ";
-		getline(cin, password);
-		cout << "Please confirm password: ";
-		getline(cin, passwordConfirm);
-
 		try
 		{
-			//error checking for account input
-			if(password != passwordConfirm)throw passwordConfermationFail();
-			//error checking for if username is already taken
-			if(CheckLogin(username, password))throw usernameAlreadyTaken();
-			//error checking for minimum length size
+			cout << "Please enter a username: ";
+			getline(cin, username);
+
+			//error checking for if the username is already taken
+			if(CheckUsername(username))throw usernameAlreadyTaken();
+
+			//error checking for minimum length for username
 			if(username.length() < 5)throw invalidUsernameLength();
+
+			cout << "Please enter a password: ";
+			getline(cin, password);
+
 			//error checking for minimum password size
 			if(password.length() < 5)throw invalidPasswordLength();
+
+			cout << "Please confirm password: ";
+			getline(cin, passwordConfirm);
+
+			//error checking for account input
+			if(password != passwordConfirm)throw passwordConfermationFail();
 
 			cout << "Account created! You may now log in\n";
 
 			//creating new instance of accInfo struct to fill with data
 			accInfo nextAccount;
+
+			//assigning the users new log in information
 			nextAccount.username = username;
 			nextAccount.password = password;
+
+			//setting defaults for all the rest of the information
+			nextAccount.name          = "COMPANY NAME";
+			nextAccount.address       = "ADDRESS";
+			nextAccount.city          = "CITY";
+			nextAccount.state         = "STATE";
+			nextAccount.zip			  = 00000;
+			nextAccount.theirInterest = 0;
+			nextAccount.ourInterest   = 0;
+			nextAccount.adminStatus   = 0;
 
 			accounts.push_back(nextAccount);
 
@@ -138,26 +140,26 @@ void Accounts::SignUp()
 			validUsername = true;
 
 		}//END - try
-		catch(int passwordConfermationFail())
+		catch(passwordConfermationFail)
 		{
 			cout << "::ATTENTION:: Passwords do not match, "
 					 "please try again\n";
 		}
 
-		catch(int usernameAlreadyTaken())
+		catch(usernameAlreadyTaken)
 		{
 			cout << "::ATTENTION:: Username already taken, "
 					 "please try again\n";
 		}
 
-		catch(int invalidUsernameLength())
+		catch(invalidUsernameLength)
 		{
 			cout << "::ATTENTION:: Invalid username, minimum of "
 					 "five characters required, "
 					 "please try again\n";
 		}
 
-		catch(int invalidPasswordLength())
+		catch(invalidPasswordLength)
 		{
 
 			cout << "::ATTENTION:: Invalid password, minimum of "
@@ -176,8 +178,7 @@ void Accounts::SignUp()
 //created queue of usernames and passwords
 bool Accounts::LogIn()
 {
-	bool passwordOK = false;
-	bool usernameOK = false;
+	bool loginOk = false;
 	string username;
 	string password;
 
@@ -188,9 +189,9 @@ bool Accounts::LogIn()
 		cout << "Enter password: ";
 		getline(cin, password);
 
-		usernameOK = CheckLogin(username, password);
+		loginOk = CheckLogin(username, password);
 
-		if(passwordOK && usernameOK)
+		if(loginOk)
 		{
 			cout << "Login successful! Welcome back " << username << endl;
 		}
@@ -199,9 +200,9 @@ bool Accounts::LogIn()
 			cout << "::ERROR:: Invalid username or password, "
 					"please try again\n";
 		}
-	}while(!(passwordOK && usernameOK));
+	}while(!loginOk);
 
-	return (passwordOK && usernameOK);
+	return (loginOk);
 }//END - LogIn
 
 //Close accounts method will output to a file a current and comprehensive
@@ -217,9 +218,18 @@ void Accounts::CloseAccounts()
 
 	for(unsigned int i = 0; i < accounts.size(); i++)
 	{
-		outFile << accounts[i].username << endl;
+		outFile << accounts[i].name 		 << endl;
+		outFile << accounts[i].address 		 << endl;
+		outFile << accounts[i].city 		 << endl;
+		outFile << accounts[i].state		 << endl;
+		outFile << accounts[i].zip 			 << endl;
+		outFile << accounts[i].theirInterest << endl;
+		outFile << accounts[i].ourInterest 	 << endl;
+		outFile << accounts[i].adminStatus 	 << endl;
+		outFile << accounts[i].username 	 << endl;
 		outFile << accounts[i].password;
-		if(i != accounts.size() - 1)outFile << endl;
+
+		if(i != accounts.size() - 1)outFile << endl << endl;
 	}
 
 	outFile.close();
@@ -234,27 +244,18 @@ int Accounts::GetTotAccounts()
 //takes in a username and searches through the queue for any same usernames
 bool Accounts::CheckLogin(string username, string password)
 {
-	bool sameUsername = false;
-	bool samePassword = false;
+	bool loginOk = false;
 	unsigned int i = 0;
 
-	while(i < accounts.size() && !sameUsername)
+	while(i < accounts.size() && !loginOk)
 	{
-		if(accounts[i].username == username)
-		{
-			sameUsername = true;
-			if(accounts[i].password == password)
-			{
-				samePassword = true;
-			}
-		}
-		else
-		{
-			i++;
-		}
+		//checking against the passed in username and password
+		loginOk = accounts[i].username == username &&
+				  accounts[i].password == password;
+		i++;
 	}
 
-	return sameUsername && samePassword;
+	return loginOk;
 }//END - SearchAccounts
 
 //prints the current list of all usernames and passwords. FOR DEV MODE ONLY
@@ -262,7 +263,40 @@ void Accounts::Print()
 {
 	for(unsigned int i = 0; i < accounts.size(); i++)
 	{
+		cout << accounts[i].name << endl;
+		cout << accounts[i].address << endl;
+		cout << accounts[i].city << endl;
+		cout << accounts[i].state << endl;
+		cout << accounts[i].zip << endl;
+		cout << accounts[i].theirInterest << endl;
+		cout << accounts[i].ourInterest << endl;
+		cout << accounts[i].adminStatus << endl;
 		cout << accounts[i].username << endl;
 		cout << accounts[i].password << endl;
+		if(i <= accounts.size())cout << endl;
 	}
 }//END - Print
+
+//returns true if a username in the list matches the passed in username
+bool Accounts::CheckUsername(string username)
+{
+	bool sameUsername = false;
+	unsigned int i = 0;
+
+	while(i < accounts.size() && !sameUsername)
+	{
+		if(accounts[i].username == username)
+		{
+			sameUsername = true;
+		}
+		else
+		{
+			i++;
+		}
+	}
+
+	return sameUsername;
+}
+
+
+
