@@ -102,6 +102,7 @@ void Accounts::SearchCompanyName()
 void Accounts::SearchCity()
 {
 	string searchItem;
+	bool found = false;
 	unsigned int i = 0;
 
 	cout << "Enter the city of the company you would like to search for: ";
@@ -113,6 +114,7 @@ void Accounts::SearchCity()
 		if(accounts[i].city == searchItem)
 		{
 			cout << endl << accounts[i].name << endl;
+			found = true;
 			i++;
 		}
 		else
@@ -120,12 +122,17 @@ void Accounts::SearchCity()
 			i++;
 		}
 	}
+	if (!found)
+	{
+		cout << " None";
+	}
 }
 
 //Allows admints to search by state
 void Accounts::SearchState()
 {
 	string searchItem;
+	bool found = false;
 	unsigned int i = 0;
 
 	cout << "Enter the state of the company you would like to search for: ";
@@ -137,6 +144,7 @@ void Accounts::SearchState()
 		if(accounts[i].state == searchItem)
 		{
 			cout << endl << accounts[i].name << endl;
+			found = true;
 			i++;
 		}
 		else
@@ -144,12 +152,17 @@ void Accounts::SearchState()
 			i++;
 		}
 	}
+	if (!found)
+	{
+		cout << " None";
+	}
 }
 
 //Allows admints to search by zip
 void Accounts::SearchZip()
 {
 	int searchItem;
+	bool found = false;
 	unsigned int i = 0;
 
 	cout << "Enter the zip of the company you would like to search for: ";
@@ -161,11 +174,16 @@ void Accounts::SearchZip()
 		if(accounts[i].zip == searchItem)
 		{
 			cout << endl << accounts[i].name << endl;
+			found = true;
 			i++;
 		}
 		else
 		{
 			i++;
 		}
+	}
+	if (!found)
+	{
+		cout << " None";
 	}
 }
