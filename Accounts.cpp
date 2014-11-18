@@ -81,6 +81,11 @@ void Accounts::SignUp()
 {
 	string username;
 	string password;
+	string companyName;
+	string address;
+	string city;
+	string state;
+	int zip;
 	string passwordConfirm;
 	bool   validUsername = false;
 
@@ -115,6 +120,28 @@ void Accounts::SignUp()
 			//error checking for account input
 			if(password != passwordConfirm)throw passwordConfermationFail();
 
+			//input company name from user
+			cout << "Please enter in your company name: ";
+			getline(cin, companyName);
+
+			//input address from user
+			cout << "Please enter in your address (street address): ";
+			getline(cin, address);
+
+			//input city from user
+			cout << "Please enter in your city: ";
+			getline(cin, city);
+
+			//input state from user
+			cout << "Please enter in your state: ";
+			getline(cin, state);
+
+			//input zip from user
+			cout << "Please enter in your zip code: ";
+			cin  >> zip;
+			cin.ignore(1000, '\n');
+
+
 			cout << "Account created! You may now log in\n";
 
 			//creating new instance of accInfo struct to fill with data
@@ -124,12 +151,14 @@ void Accounts::SignUp()
 			nextAccount.username = username;
 			nextAccount.password = password;
 
+			//Sets the class information from the inputs from the user
+			nextAccount.name          = companyName;
+			nextAccount.address       = address;
+			nextAccount.city          = city;
+			nextAccount.state         = state;
+			nextAccount.zip			  = zip;
+
 			//setting defaults for all the rest of the information
-			nextAccount.name          = "COMPANY NAME";
-			nextAccount.address       = "ADDRESS";
-			nextAccount.city          = "CITY";
-			nextAccount.state         = "STATE";
-			nextAccount.zip			  = 00000;
 			nextAccount.theirInterest = 0;
 			nextAccount.ourInterest   = 0;
 			nextAccount.adminStatus   = 0;
@@ -176,11 +205,15 @@ void Accounts::SignUp()
 //The following method will allow the user to log into their account. It will
 //prompt for a username and password and check them against the already-
 //created queue of usernames and passwords
-bool Accounts::LogIn()
+bool Accounts::LogIn(bool &adminStatus)
 {
 	bool loginOk = false;
+	adminStatus = false;
+	int admin = 0;
+	int count = 0;
 	string username;
 	string password;
+	int i =0;
 
 	do
 	{
@@ -189,11 +222,23 @@ bool Accounts::LogIn()
 		cout << "Enter password: ";
 		getline(cin, password);
 
-		loginOk = CheckLogin(username, password);
+		loginOk = CheckLogin(username, password, i, count);
+
 
 		if(loginOk)
 		{
-			cout << "Login successful! Welcome back " << username << endl;
+			admin = accounts[count-1].adminStatus;
+			adminStatus = CheckAdmin(adminStatus, admin);
+
+			if (admin)
+			{
+				cout << "Login successful! Welcome back admin " << username << endl;
+			}
+			else
+			{
+				cout << "Login successful! Welcome back user " << username << endl;
+			}
+
 		}
 		else
 		{
@@ -242,10 +287,11 @@ int Accounts::GetTotAccounts()
 }//END - GetTotAccounts
 
 //takes in a username and searches through the queue for any same usernames
-bool Accounts::CheckLogin(string username, string password)
+bool Accounts::CheckLogin(string username, string password, unsigned int i,
+		int &count)
 {
 	bool loginOk = false;
-	unsigned int i = 0;
+	i = 0;
 
 	while(i < accounts.size() && !loginOk)
 	{
@@ -254,6 +300,8 @@ bool Accounts::CheckLogin(string username, string password)
 				  accounts[i].password == password;
 		i++;
 	}
+
+	count = i;
 
 	return loginOk;
 }//END - SearchAccounts
@@ -298,5 +346,20 @@ bool Accounts::CheckUsername(string username)
 	return sameUsername;
 }
 
+bool Accounts::CheckAdmin(bool adminStatus, int admin)
+{
+	adminStatus = false;
+
+	if (admin == 1)
+	{
+		adminStatus = true;
+	}
+	else if (admin != 1)
+	{
+		return false;
+	}
+
+	return adminStatus;
+}
 
 

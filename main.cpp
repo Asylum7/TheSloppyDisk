@@ -2,30 +2,40 @@
 
 int main()
 {
-
+	bool adminStatus = false;
 	Accounts test;
+	int selection;
 
-	cout << "TESTING:\n\n";
+	while (selection != 0 && selection != 2)
+	{
+		cout <<	  "\nPlease make a selection:\n"
+				  "1--Sign Up\n"
+				  "2--Log in\n"
+				  "0--Exit\n\n"
+				  "Selection: ";
 
-	test.Print();
+		cin  >> selection;
+		cin.ignore();
 
-	cout << endl << endl;
+		switch(selection)
+		{
+		case 1: test.SignUp();
+				break;
+		case 2: cout << endl;
+				test.LogIn(adminStatus);
 
-	test.SignUp();
-
-	cout << endl << endl;
-	test.Print();
-	cout << endl << endl;
-
-	test.LogIn();
-
-	cout << endl << endl;
-
-
-	cout << endl << endl;
-	test.Print();
-
-	test.CloseAccounts();
+				if (adminStatus == true)
+				{
+					test.AdminSelection();
+				}
+				else
+				{
+					//Joshs code can go here
+					cout << "Josh Code";
+				}
+		}
+		test.CloseAccounts();
+	}
 
 	return 0;
 }

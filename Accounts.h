@@ -37,18 +37,29 @@ public:
 
 //ACCESSORS////////////////////////////////////////////////////////////////////
 	//returns true if login was successful
-	bool LogIn();
+	bool LogIn(bool &adminStatus);
 	//updates the current account text file
 	void CloseAccounts();
 	//returns the current total number of accounts
 	int  GetTotAccounts();
 	//returns true if passed in string matches username AND password in list
-	bool CheckLogin(string username, string password);
+	bool CheckLogin(string username, string password, unsigned int i,
+			int &count);
 	//displays the current contents of the queue
 	void Print();
 	//returns true if the passed in string matches username in list
 	bool CheckUsername(string username);
+	//returns type if the username is an admin
+	bool CheckAdmin(bool adminStatus, int admin);
 
+	//ADMIN FUNCTIONS
+	void AdminPrint();
+	void AdminSelection();
+	void SearchUserName();
+	void SearchCompanyName();
+	void SearchCity();
+	void SearchState();
+	void SearchZip();
 
 private:
 	vector<accInfo> accounts;
