@@ -8,8 +8,8 @@ Accounts::Accounts()
 	string city;
 	string state;
 	int    zip = 0;
-	int    theirInterest = 0;
-	int    ourInterest = 0;
+	string theirInterest = " ";
+	string ourInterest = " ";
 	bool   adminStatus;
 	string username;
 	string password;
@@ -33,12 +33,10 @@ Accounts::Accounts()
 		inFile.ignore(10000, '\n');
 
 		//taking in the users interest level
-		inFile >> theirInterest;
-		inFile.ignore(10000, '\n');
+		getline(inFile, theirInterest);
 
 		//taking in our interest level, it's been assigned yet
-		inFile >> ourInterest;
-		inFile.ignore(10000, '\n');
+		getline(inFile, ourInterest);
 
 		//Assigning admin status
 		inFile >> adminStatus;
@@ -159,8 +157,8 @@ void Accounts::SignUp()
 			nextAccount.zip			  = zip;
 
 			//setting defaults for all the rest of the information
-			nextAccount.theirInterest = 0;
-			nextAccount.ourInterest   = 0;
+			nextAccount.theirInterest = " ";
+			nextAccount.ourInterest   = " ";
 			nextAccount.adminStatus   = 0;
 
 			accounts.push_back(nextAccount);

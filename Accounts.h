@@ -15,8 +15,8 @@ struct accInfo
 	string city;
 	string state;
 	int    zip;
-	int    theirInterest;
-	int    ourInterest;
+	string theirInterest;
+	string ourInterest;
 	bool   adminStatus;
 	string username;
 	string password;
@@ -60,6 +60,16 @@ public:
 	void SearchCity();
 	void SearchState();
 	void SearchZip();
+	void SearchTheirInterest();
+	void SearchOurInterest();
+	void AccountOptionsMenu();
+	void AccountOptionsSelection();
+	void CreateUser();
+	void EditUserMenu();
+	void EditUser();
+	void EditInterest();
+	void EditAdminStatus();
+
 
 private:
 	vector<accInfo> accounts;
@@ -67,6 +77,3 @@ private:
 };
 
 #endif /* ACCOUNTS_H_ */
-
-
-//YO MOMMA SO FAT AND I DON'T KNOW ANY GOOD MOMMA JOKES

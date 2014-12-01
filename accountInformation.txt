@@ -3,8 +3,8 @@ Los Angeles Airport
 El Segundo
 CA
 90245
-10
-10
+very interested
+key
 0
 Jack112
 password123
@@ -14,8 +14,8 @@ Secret Service
 Reston
 VA
 12345
-10
-10
+very interested
+key
 0
 69Ryan_B
 987att2
@@ -25,8 +25,8 @@ FBI
 Washington D.C.
 VA
 234
-6
-10
+somewhat interested
+key
 0
 Noah1212
 letMeIn
@@ -36,8 +36,8 @@ CIA
 Baltimore
 MD
 754
-10
-10
+very interested
+key
 0
 ScottBOSS
 qwerty
@@ -47,8 +47,8 @@ Saddleback College
 Mission Viejo
 CA
 92692
-0
-5
+not interested
+nice to have
 1
 JoeKingBoy
 PunnyNo?
@@ -58,8 +58,8 @@ Los Angeles Dodgers
 Los Angeles
 CA
 90277
-10
-5
+very interested
+nice to have
 0
 MiMyself
 tinkerbell1
@@ -69,8 +69,8 @@ Ballas
 Lake Forest
 CA
 92630
-0
-0
+very interested
+nice to have
 1
 packerfan626
 123456
@@ -80,8 +80,8 @@ Yogurtland
 Lake Forest
 CA
 92630
+very interested
+nice to have
 0
-0
-1
 jerryl
 12345
