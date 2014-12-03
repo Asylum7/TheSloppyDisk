@@ -14,6 +14,7 @@ void Accounts::SearchUserName()
 	if (sameUserName == true)
 	{
 		cout << "Found user: " << searchItem;
+
 	}
 	else
 	{
@@ -31,7 +32,7 @@ void Accounts::SearchCompanyName()
 	cout << "Enter the name of the company you would like to search for: ";
 	getline(cin, searchItem);
 
-	while (i < accounts.size() && !companyName)
+	while (i < accounts.size() && !companyName && accounts[i].adminStatus != 1)
 	{
 		if(accounts[i].name == searchItem)
 		{
@@ -45,7 +46,13 @@ void Accounts::SearchCompanyName()
 
 	if (companyName == true)
 	{
-		cout << "Found company name: " << searchItem;
+		cout << "\nFound company name: " << searchItem << endl;
+		cout << "Company Address   : " << accounts[i].address << " "
+									   << accounts[i].city << ", "
+									   << accounts[i].state << " "
+									   << accounts[i].zip << endl;
+		cout << "Their Interest    : " << accounts[i].theirInterest << endl;
+		cout << "Our Interest      : " << accounts[i].ourInterest << endl;
 	}
 	else
 	{
@@ -63,12 +70,19 @@ void Accounts::SearchCity()
 	cout << "Enter the city of the company you would like to search for: ";
 	getline(cin, searchItem);
 
-	cout << "Companies located in the city " << searchItem << ":";
+	cout << "Companies located in the city " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
-		if(accounts[i].city == searchItem)
+		if(accounts[i].city == searchItem && accounts[i].adminStatus != 1)
 		{
-			cout << endl << accounts[i].name << endl;
+			cout << endl << "Company Name      : "<< accounts[i].name
+					<< endl;
+			cout << "Company Address   : " << accounts[i].address << " "
+										   << accounts[i].city << ", "
+										   << accounts[i].state << " "
+										   << accounts[i].zip << endl;
+			cout << "Their Interest    : " << accounts[i].theirInterest << endl;
+			cout << "Our Interest      : " << accounts[i].ourInterest << endl;
 			found = true;
 			i++;
 		}
@@ -93,12 +107,19 @@ void Accounts::SearchState()
 	cout << "Enter the state of the company you would like to search for: ";
 	getline(cin, searchItem);
 
-	cout << "Companies located in the state " << searchItem << ":";
+	cout << "Companies located in the state " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
-		if(accounts[i].state == searchItem)
+		if(accounts[i].state == searchItem && accounts[i].adminStatus != 1)
 		{
-			cout << endl << accounts[i].name << endl;
+			cout << endl << "Company Name      : "<< accounts[i].name
+					<< endl;
+			cout << "Company Address   : " << accounts[i].address << " "
+										   << accounts[i].city << ", "
+										   << accounts[i].state << " "
+										   << accounts[i].zip << endl;
+			cout << "Their Interest    : " << accounts[i].theirInterest << endl;
+			cout << "Our Interest      : " << accounts[i].ourInterest << endl;
 			found = true;
 			i++;
 		}
@@ -123,12 +144,19 @@ void Accounts::SearchZip()
 	cout << "Enter the zip of the company you would like to search for: ";
 	cin  >> searchItem;
 
-	cout << "Companies located in the zip code " << searchItem << ":";
+	cout << "Companies located in the zip code " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
-		if(accounts[i].zip == searchItem)
+		if(accounts[i].zip == searchItem && accounts[i].adminStatus != 1)
 		{
-			cout << endl << accounts[i].name << endl;
+			cout << endl << "Company Name      : " << accounts[i].name
+					<< endl;
+			cout << "Company Address   : " << accounts[i].address << " "
+										   << accounts[i].city << ", "
+										   << accounts[i].state << " "
+										   << accounts[i].zip << endl;
+			cout << "Their Interest    : " << accounts[i].theirInterest << endl;
+			cout << "Our Interest      : " << accounts[i].ourInterest << endl;
 			found = true;
 			i++;
 		}

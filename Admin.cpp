@@ -202,7 +202,7 @@ void Accounts::CreateUser()
 			nextAccount.ourInterest   = ourInterest;
 
 			//setting defaults for all the rest of the information
-			nextAccount.theirInterest = " ";
+			nextAccount.theirInterest = "somewhat interested";
 
 			accounts.push_back(nextAccount);
 
