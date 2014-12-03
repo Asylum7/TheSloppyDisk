@@ -19,7 +19,6 @@ void Accounts::SearchUserName()
 	{
 		cout << "Did not find user: " << searchItem;
 	}
-
 }
 
 //Allows admin to Search for a company name
@@ -178,7 +177,7 @@ void Accounts::SearchTheirInterest()
 	{
 		for (unsigned int index = 0; index < accounts.size(); index++)
 		{
-			if (accounts[index].theirInterest == searchItem)
+			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
 			{
 				cout << "Username: " << accounts[index].username << endl;
 				cout << "Company Name: " << accounts[index].name << endl << endl;
@@ -189,7 +188,7 @@ void Accounts::SearchTheirInterest()
 	{
 		for (unsigned int index = 0; index < accounts.size(); index++)
 		{
-			if (accounts[index].theirInterest == searchItem)
+			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
 			{
 				cout << "Username: " << accounts[index].username << endl;
 				cout << "Company Name: " << accounts[index].name << endl << endl;
@@ -200,7 +199,7 @@ void Accounts::SearchTheirInterest()
 	{
 		for (unsigned int index = 0; index < accounts.size(); index++)
 		{
-			if (accounts[index].theirInterest == searchItem)
+			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
 			{
 				cout << "Username: " << accounts[index].username << endl;
 				cout << "Company Name: " << accounts[index].name << endl << endl;
@@ -241,7 +240,7 @@ void Accounts::SearchOurInterest()
 		{
 			for (unsigned int index = 0; index < accounts.size(); index++)
 			{
-				if (accounts[index].ourInterest == searchItem)
+				if (accounts[index].ourInterest == searchItem && accounts[index].adminStatus != 1)
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
@@ -252,7 +251,7 @@ void Accounts::SearchOurInterest()
 		{
 			for (unsigned int index = 0; index < accounts.size(); index++)
 			{
-				if (accounts[index].ourInterest == searchItem)
+				if (accounts[index].ourInterest == searchItem && accounts[index].adminStatus != 1)
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;

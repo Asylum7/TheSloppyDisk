@@ -156,25 +156,32 @@ void Accounts::CreateUser()
 			cin  >> admin;
 			cin.ignore(1000, '\n');
 
-			cout << "Our interest level: ";
-			cin  >> selection;
-			cin.ignore (1000, '\n');
 
-			cout << "1--Key\n"
-				"2--Nice To Have\n\n"
-				"Selection: ";
-
-			cin >> selection;
-			cin.ignore(1000, '\n');
-
-			switch (selection)
+			if (admin != 1)
 			{
-				case 1: ourInterest = "Key";
-					break;
-				case 2: ourInterest = "Nice to Have";
-					break;
-				default: cout << "***INVALID INPUT***";
+				cout << "Our interest level: \n";
+				cout << "1--Key\n"
+					"2--Nice To Have\n\n"
+					"Selection: ";
+
+				cin >> selection;
+				cin.ignore(1000, '\n');
+
+				switch (selection)
+				{
+					case 1: ourInterest = "Key";
+						break;
+					case 2: ourInterest = "Nice to Have";
+						break;
+					default: cout << "***INVALID INPUT***";
+				}
+
 			}
+			else if (admin == 1)
+			{
+				ourInterest = "key";
+			}
+
 
 			cout << "Account created! User may now log in\n";
 
@@ -278,55 +285,58 @@ void Accounts::EditInterest()
 		cout << accounts[index].ourInterest << endl << endl;
 	}
 
-	cout << "Enter the user name you would like to edit: ";
+	cout << "Enter the user name you would like to edit (Press X to exit): ";
 	getline(cin, userName);
 
-	while(i < accounts.size() && !sameUserName)
+	if (userName != "X" && userName != "x")
 	{
-		if(accounts[i].username == userName)
+		while(i < accounts.size() && !sameUserName)
 		{
-			sameUserName = true;
-			break;
-		}
-		else if (sameUserName != true)
-		{
-			i++;
-		}
-	}
-
-	if (sameUserName)
-	{
-		cout << "Found user " << userName << endl;
-
-		cout << "\nWhat would you like to change our interest too?\n";
-
-		cout << "1--Key\n"
-				"2--Nice To Have\n"
-				"0--Return to Previous Screen\n\n"
-				"Selection: ";
-
-		cin >> selection;
-		cin.ignore(1000, '\n');
-
-		switch (selection)
-		{
-			case 0:
+			if(accounts[i].username == userName)
+			{
+				sameUserName = true;
 				break;
-			case 1: accounts[i].ourInterest = "key";
-			cout << "\nStatus Changed to: " << accounts[i].ourInterest
-					<< endl;
-				break;
-			case 2: accounts[i].ourInterest = "nice to have";
-			cout << "\nStatus Changed to: " << accounts[i].ourInterest
-					<< endl;
-				break;
-			default: cout << "***INVALID INPUT***";
+			}
+			else if (sameUserName != true)
+			{
+				i++;
+			}
 		}
 
-	}
-	else
-	{
-		cout << "\nUser not in DataBase!\n";
+		if (sameUserName)
+		{
+			cout << "Found user " << userName << endl;
+
+			cout << "\nWhat would you like to change our interest to?\n";
+
+			cout << "1--Key\n"
+					"2--Nice To Have\n"
+					"0--Return to Previous Screen\n\n"
+					"Selection: ";
+
+			cin >> selection;
+			cin.ignore(1000, '\n');
+
+			switch (selection)
+			{
+				case 0:
+					break;
+				case 1: accounts[i].ourInterest = "key";
+				cout << "\nStatus Changed to: " << accounts[i].ourInterest
+						<< endl;
+					break;
+				case 2: accounts[i].ourInterest = "nice to have";
+				cout << "\nStatus Changed to: " << accounts[i].ourInterest
+						<< endl;
+					break;
+				default: cout << "***INVALID INPUT***";
+			}
+
+		}
+		else
+		{
+			cout << "\nUser not in DataBase!\n";
+		}
 	}
 }
 
@@ -341,74 +351,84 @@ void Accounts::EditAdminStatus()
 	for (unsigned int index = 0; index < accounts.size(); index++)
 	{
 		cout << accounts[index].username << endl;
-		cout << accounts[index].adminStatus << endl << endl;
-	}
-
-	cout << "Enter the user name you would like to edit: ";
-	getline(cin, userName);
-
-	while(i < accounts.size() && !sameUserName)
-	{
-		if(accounts[i].username == userName)
+		if(accounts[index].adminStatus== 1)
 		{
-			sameUserName = true;
-			break;
-		}
-		else if (sameUserName != true)
-		{
-			i++;
-		}
-	}
-
-	if (sameUserName == true)
-	{
-		if(accounts[i].adminStatus == 1)
-		{
-			adminStatus = true;
+			cout << "ADMIN\n\n";
 		}
 		else
 		{
-			adminStatus = false;
+			cout << "NOT ADMIN\n\n";
 		}
+	}
 
-	if (adminStatus)
+	cout << "Enter the user name you would like to edit, press X to cancel: ";
+	getline(cin, userName);
+
+	if (userName != "X" && userName != "x")
 	{
-		cout << "Would you like to demote this admin to a user? (Y or N)\n";
-		cout << "Response: ";
-		cin.get(response);
-
-		switch (response)
+		while(i < accounts.size() && !sameUserName)
 		{
-		case 'Y': accounts[i].adminStatus = 0;
-				  cout << "\nDEMOTED\n";
-				  break;
-		case 'N': cout << "\nNO CHANGE!\n" ;
-				  break;
-		default: cout << "\nINVALID INPUT, ENTER Y or N\n";
+			if(accounts[i].username == userName)
+			{
+				sameUserName = true;
+				break;
+			}
+			else if (sameUserName != true)
+			{
+				i++;
+			}
 		}
-	}
-	else
-	{
-		cout << "Would you like to promote this user to a admin? (Y or N)\n";
-		cout << "Response: ";
-		cin.get(response);
 
-		switch (response)
+		if (sameUserName == true)
 		{
-		case 'Y': accounts[i].adminStatus = 1;
-				  cout << "\nPROMOTED\n";
-				  break;
-		case 'N': cout << "\nNO CHANGE!\n" ;
-				  break;
-		default: cout << "\nINVALID INPUT, ENTER Y or N\n";
-		}
-	}
-	}
-	else
-	{
-		cout << "\nUser not in DataBase!\n";
-	}
+			if(accounts[i].adminStatus == 1)
+			{
+				adminStatus = true;
+			}
+			else
+			{
+				adminStatus = false;
+			}
 
+		if (adminStatus)
+		{
+			cout << "Would you like to demote this admin to a user? (Y or N)\n";
+			cout << "Response: ";
+			cin.get(response);
+
+			switch (response)
+			{
+			case 'Y': accounts[i].adminStatus = 0;
+					  cout << "\nDEMOTED\n";
+					  break;
+			case 'N': cout << "\nNO CHANGE!\n" ;
+					  break;
+			default: cout << "\nINVALID INPUT, ENTER Y or N\n";
+			}
+		}
+		else
+		{
+			cout << "Would you like to promote this user to a admin? (Y or N)\n";
+			cout << "Response: ";
+			cin.get(response);
+
+			switch (response)
+			{
+			case 'Y': accounts[i].adminStatus = 1;
+					  cout << "\nPROMOTED\n";
+					  break;
+			case 'N': cout << "\nNO CHANGE!\n" ;
+					  break;
+			default: cout << "\nINVALID INPUT, ENTER Y or N\n";
+			}
+		}
+		}
+		else
+		{
+			cout << "\nUser not in DataBase!\n";
+		}
+
+	}
 }
 
 

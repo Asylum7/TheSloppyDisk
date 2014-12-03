@@ -49,7 +49,7 @@ CA
 92692
 not interested
 nice to have
-1
+0
 JoeKingBoy
 PunnyNo?
 
@@ -60,7 +60,7 @@ CA
 90277
 very interested
 nice to have
-0
+1
 MiMyself
 tinkerbell1
 
@@ -70,18 +70,18 @@ Lake Forest
 CA
 92630
 very interested
-nice to have
+key
 1
 packerfan626
 123456
 
-Yogurtland
-2119 Lal St
+Dam Right
+Talon Street
 Lake Forest
 CA
 92630
-very interested
-nice to have
-0
-jerryl
-12345
+ 
+key
+1
+talon1c
+talon123
