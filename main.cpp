@@ -6,6 +6,9 @@ int main()
 	Accounts test;
 	int selection;
 
+	//testing text/background color
+	system("color 12");
+
 	while (selection != 0 && selection != 2)
 	{
 		cout <<	  "\nPlease make a selection:\n"
@@ -30,6 +33,10 @@ int main()
 				}
 				else
 				{
+					//testing text/background color
+					system("clear");
+					system("color 9F");
+
 					//Joshs code can go here
 					cout << "Josh Code";
 				}
