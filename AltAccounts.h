@@ -23,13 +23,13 @@ struct accInfo
 	string password;
 };
 
-class Accounts {
+class AltAccounts {
 public:
 	//default constructor not used, it will not allow the program to be function
-	Accounts();
+	AltAccounts();
 	//overloaded constructor
-	Accounts(int i);
-	virtual ~Accounts();
+	AltAccounts(int i);
+	virtual ~AltAccounts();
 
 //MUTATORS/////////////////////////////////////////////////////////////////////
 	//upon successful login,
@@ -40,9 +40,9 @@ public:
 	//returns true if login was successful
 	bool LogIn(bool &adminStatus);
 	//updates the current account text file
-	void CloseAccounts();
-	//returns the current total number of accounts
-	int  GetTotAccounts();
+	void CloseAltAccounts();
+	//returns the current total number of AltAccounts
+	int  GetTotAltAccounts();
 	//returns true if passed in string matches username AND password in list
 	bool CheckLogin(string username, string password, unsigned int i,
 			int &count);
@@ -74,7 +74,7 @@ public:
 
 private:
 	vector<accInfo> accounts;
-	int totalAccounts;
+	int totalAltAccounts;
 };
 
 

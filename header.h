@@ -11,5 +11,3 @@ using namespace std;
 
 
 #endif /* HEADER_H_ */
-
-//Let's see if this works. DAMNIT WORK!

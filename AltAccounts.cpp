@@ -1,7 +1,7 @@
 #include "AltAccounts.h"
 
 //creating an account will generate a queue of account names and passwords
-Accounts::Accounts()
+AltAccounts::AltAccounts()
 {
 	string name;
 	string address;
@@ -13,7 +13,7 @@ Accounts::Accounts()
 	bool   adminStatus;
 	string username;
 	string password;
-	totalAccounts = 0;
+	totalAltAccounts = 0;
 
 	ifstream inFile;
 	inFile.open("accountInformation.txt");
@@ -21,8 +21,8 @@ Accounts::Accounts()
 	//has created a queue of account names and passwords
 	while(inFile)
 	{
-		//incrementing the total number of accounts
-		totalAccounts++;
+		//incrementing the total number of AltAccounts
+		totalAltAccounts++;
 
 		//taking in user address information
 		getline(inFile, name);
@@ -68,14 +68,14 @@ Accounts::Accounts()
 }//END - Default Constructor
 
 //default destructor
-Accounts::~Accounts(){}
+AltAccounts::~AltAccounts(){}
 
 //MUTATORS/////////////////////////////////////////////////////////////////////
 
 //Sign In method will prompt the user for a username and password, the sign
 //in method will then check the validity of the username against the usernames
 //already created as well as for being a valid username of over a set length
-void Accounts::SignUp()
+void AltAccounts::SignUp()
 {
 	string username;
 	string password;
@@ -90,7 +90,7 @@ void Accounts::SignUp()
 	//catch classes
 	class invalidPasswordLength{};
 	class invalidUsernameLength{};
-	class passwordConfermationFail{};
+	class passwordConfirmationFail{};
 	class usernameAlreadyTaken{};
 
 	do
@@ -116,7 +116,7 @@ void Accounts::SignUp()
 			getline(cin, passwordConfirm);
 
 			//error checking for account input
-			if(password != passwordConfirm)throw passwordConfermationFail();
+			if(password != passwordConfirm)throw passwordConfirmationFail();
 
 			//input company name from user
 			cout << "Please enter in your company name: ";
@@ -163,11 +163,11 @@ void Accounts::SignUp()
 
 			accounts.push_back(nextAccount);
 
-			totalAccounts++;
+			totalAltAccounts++;
 			validUsername = true;
 
 		}//END - try
-		catch(passwordConfermationFail)
+		catch(passwordConfirmationFail)
 		{
 			cout << "::ATTENTION:: Passwords do not match, "
 					 "please try again\n";
@@ -203,7 +203,7 @@ void Accounts::SignUp()
 //The following method will allow the user to log into their account. It will
 //prompt for a username and password and check them against the already-
 //created queue of usernames and passwords
-bool Accounts::LogIn(bool &adminStatus)
+bool AltAccounts::LogIn(bool &adminStatus)
 {
 	bool loginOk = false;
 	adminStatus = false;
@@ -248,9 +248,9 @@ bool Accounts::LogIn(bool &adminStatus)
 	return (loginOk);
 }//END - LogIn
 
-//Close accounts method will output to a file a current and comprehensive
+//Close AltAccounts method will output to a file a current and comprehensive
 //list of all the usernames and passwords currently in the program
-void Accounts::CloseAccounts()
+void AltAccounts::CloseAltAccounts()
 {
 	ofstream outFile;
 
@@ -276,16 +276,16 @@ void Accounts::CloseAccounts()
 	}
 
 	outFile.close();
-}//END - CloseAccounts
+}//END - CloseAltAccounts
 
-//returns the total number of accounts
-int Accounts::GetTotAccounts()
+//returns the total number of AltAccounts
+int AltAccounts::GetTotAltAccounts()
 {
-	return totalAccounts;
-}//END - GetTotAccounts
+	return totalAltAccounts;
+}//END - GetTotAltAccounts
 
 //takes in a username and searches through the queue for any same usernames
-bool Accounts::CheckLogin(string username, string password, unsigned int i,
+bool AltAccounts::CheckLogin(string username, string password, unsigned int i,
 		int &count)
 {
 	bool loginOk = false;
@@ -302,10 +302,10 @@ bool Accounts::CheckLogin(string username, string password, unsigned int i,
 	count = i;
 
 	return loginOk;
-}//END - SearchAccounts
+}//END - SearchAltAccounts
 
 //prints the current list of all usernames and passwords. FOR DEV MODE ONLY
-void Accounts::Print()
+void AltAccounts::Print()
 {
 	for(unsigned int i = 0; i < accounts.size(); i++)
 	{
@@ -324,7 +324,7 @@ void Accounts::Print()
 }//END - Print
 
 //returns true if a username in the list matches the passed in username
-bool Accounts::CheckUsername(string username)
+bool AltAccounts::CheckUsername(string username)
 {
 	bool sameUsername = false;
 	unsigned int i = 0;
@@ -344,7 +344,7 @@ bool Accounts::CheckUsername(string username)
 	return sameUsername;
 }
 
-bool Accounts::CheckAdmin(bool adminStatus, int admin)
+bool AltAccounts::CheckAdmin(bool adminStatus, int admin)
 {
 
 	if (admin == 1)
