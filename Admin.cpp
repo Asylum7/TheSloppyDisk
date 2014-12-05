@@ -2,6 +2,7 @@
 
 void Accounts::AdminPrint()
 {
+	system("CLS");
 	cout <<  "1--Search by Name\n"
 			 "2--Search by Company Name\n"
 			 "3--Search by City\n"
@@ -10,7 +11,7 @@ void Accounts::AdminPrint()
 			 "6--Search by Their Interest\n"
 			 "7--Search by Our Interest\n"
 			 "8--Account Options\n"
-			 "0--Exit\n\n"
+			 "0--Sign Off\n\n"
 			 "Selection: ";
 }
 
@@ -54,8 +55,10 @@ void Accounts::AdminSelection()
 
 void Accounts::AccountOptionsMenu()
 {
+	system("CLS");
 	cout << "1--Create a User\n"
 			"2--Edit a User\n"
+			"3--Delete a User\n"
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
 }
@@ -80,6 +83,8 @@ void Accounts::AccountOptionsSelection()
 		case 1: CreateUser();
 			break;
 		case 2: EditUser();
+			break;
+		case 3: DeleteUser();
 			break;
 		default: cout << "***INVALID INPUT****";
 		}
@@ -241,6 +246,7 @@ void Accounts::CreateUser()
 
 void Accounts::EditUserMenu()
 {
+	system("CLS");
 	cout << "\n1--Edit Our Interest\n"
 			"2--Edit Admin Status\n"
 			"0--Return to Previous Menu\n\n"
@@ -431,4 +437,26 @@ void Accounts::EditAdminStatus()
 	}
 }
 
+void Accounts::DeleteUser()
+{
+	int selection = 0;
+	cout << endl;
+	for (unsigned int index = 1; index < accounts.size(); index++)
+	{
+		cout << index << ": Username: " << accounts[index].username << endl;
+		cout << "Company Name: " << accounts[index].name << endl << endl;
+	}
 
+	cout << "Which user would you like to delete? Type 0 to exit: ";
+	cin  >> selection;
+
+	if(selection != 0)
+	{
+		cout << "ERASED: " << accounts[selection].username;
+		accounts.erase(accounts.begin() + selection);
+	}
+	else
+	{
+
+	}
+}

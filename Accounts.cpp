@@ -1,4 +1,4 @@
-#include "Accounts.h"
+#include "header.h"
 
 //creating an account will generate a queue of account names and passwords
 Accounts::Accounts()
@@ -84,6 +84,8 @@ void Accounts::SignUp()
 	string city;
 	string state;
 	int zip;
+	int selection;
+	string theirInterest;
 	string passwordConfirm;
 	bool   validUsername = false;
 
@@ -139,8 +141,32 @@ void Accounts::SignUp()
 			cin  >> zip;
 			cin.ignore(1000, '\n');
 
+			//input interest from user
+			cout << "\nWhat is your interest in the company?\n";
+			cout << "1-- Very Interested\n"
+					"2-- Somewhat Interested\n"
+					"3-- Not Interested\n"
+					"Selection: ";
 
-			cout << "Account created! You may now log in\n";
+			if(cin  >> selection)
+			{
+				switch (selection)
+				{
+				case 1: theirInterest = "very interested";
+					   break;
+				case 2: theirInterest = "somewhat interested";
+					   break;
+				case 3: theirInterest = "not interested";
+					   break;
+				default: cout << "***INVALID INPUT***";
+				}
+			}
+			else
+			{
+				cout << "INVALID!";
+			}
+
+			cout << "\nAccount created! You may now log in\n";
 
 			//creating new instance of accInfo struct to fill with data
 			accInfo nextAccount;
@@ -155,9 +181,9 @@ void Accounts::SignUp()
 			nextAccount.city          = city;
 			nextAccount.state         = state;
 			nextAccount.zip			  = zip;
+			nextAccount.theirInterest = theirInterest;
 
 			//setting defaults for all the rest of the information
-			nextAccount.theirInterest = " ";
 			nextAccount.ourInterest   = " ";
 			nextAccount.adminStatus   = 0;
 
@@ -230,11 +256,13 @@ bool Accounts::LogIn(bool &adminStatus)
 
 			if (admin)
 			{
-				cout << "Login successful! Welcome back admin " << username << endl;
+				system("CLS");
+				cout << "\nLogin successful! Welcome back admin " << username << endl;
 			}
 			else
 			{
-				cout << "Login successful! Welcome back user " << username << endl;
+				system("CLS");
+				cout << "\nLogin successful! Welcome back user " << username << endl;
 			}
 
 		}

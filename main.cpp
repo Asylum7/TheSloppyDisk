@@ -6,10 +6,8 @@ int main()
 	Accounts test;
 	int selection;
 
-	//testing text/background color
-	system("color 12");
 
-	while (selection != 0 && selection != 2)
+	while (selection != 0)
 	{
 		cout <<	  "\nPlease make a selection:\n"
 				  "1--Sign Up\n"
@@ -40,10 +38,11 @@ int main()
 					//Joshs code can go here
 					cout << "Josh Code";
 				}
+				break;
+		default: cout << "\n**INVALID INPUT***\n";
 		}
-		test.CloseAccounts();
+			test.CloseAccounts();
 	}
 
 	return 0;
 }
-//here's a new comment.

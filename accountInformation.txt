@@ -49,7 +49,7 @@ CA
 92692
 not interested
 nice to have
-0
+1
 JoeKingBoy
 PunnyNo?
 
@@ -60,7 +60,7 @@ CA
 90277
 very interested
 nice to have
-1
+0
 MiMyself
 tinkerbell1
 
@@ -70,18 +70,7 @@ Lake Forest
 CA
 92630
 very interested
-key
+nice to have
 1
 packerfan626
 123456
-
-Dam Right
-Talon Street
-Lake Forest
-CA
-92630
- 
-key
-1
-talon1c
-talon123

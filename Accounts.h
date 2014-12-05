@@ -69,6 +69,7 @@ public:
 	void EditUser();
 	void EditInterest();
 	void EditAdminStatus();
+	void DeleteUser();
 
 
 private:
