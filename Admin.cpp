@@ -2,33 +2,19 @@
 #include "Accounts.h"
 void Accounts::AdminPrint()
 {
-<<<<<<< HEAD
-cout << "1--Search by Name\n"
-"2--Search by Company Name\n"
-"3--Search by City\n"
-"4--Search by State\n"
-"5--Search by Zip\n"
-"6--Search by Their Interest\n"
-"7--Search by Our Interest\n"
-"8--Account Options\n"
-"0--Exit\n\n"
-"Selection: ";
-}
-=======
-	system("CLS");
-	cout <<  "1--Search by Name\n"
-			 "2--Search by Company Name\n"
-			 "3--Search by City\n"
-			 "4--Search by State\n"
-			 "5--Search by Zip\n"
-			 "6--Search by Their Interest\n"
-			 "7--Search by Our Interest\n"
-			 "8--Account Options\n"
-			 "0--Sign Off\n\n"
-			 "Selection: ";
+		system("CLS");
+		cout <<  "1--Search by Name\n"
+				 "2--Search by Company Name\n"
+				 "3--Search by City\n"
+				 "4--Search by State\n"
+				 "5--Search by Zip\n"
+				 "6--Search by Their Interest\n"
+				 "7--Search by Our Interest\n"
+				 "8--Account Options\n"
+				 "0--Sign Off\n\n"
+				 "Selection: ";
 }
 
->>>>>>> origin/master
 void Accounts::AdminSelection()
 {
 int selection;
@@ -65,23 +51,19 @@ default: cout << "***INVALID INPUT****";
 }
 void Accounts::AccountOptionsMenu()
 {
-<<<<<<< HEAD
 cout << "1--Create a User\n"
 "2--Edit a User\n"
 "0--Back to Previous Menu\n\n"
 "Selection: ";
-=======
 	system("CLS");
 	cout << "1--Create a User\n"
 			"2--Edit a User\n"
 			"3--Delete a User\n"
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
->>>>>>> origin/master
 }
 void Accounts::AccountOptionsSelection()
 {
-<<<<<<< HEAD
 int accountSelection;
 while (accountSelection != 0)
 {
@@ -101,7 +83,6 @@ break;
 default: cout << "***INVALID INPUT****";
 }
 }
-=======
 	int accountSelection;
 
 	while (accountSelection != 0)
@@ -126,7 +107,6 @@ default: cout << "***INVALID INPUT****";
 		default: cout << "***INVALID INPUT****";
 		}
 	}
->>>>>>> origin/master
 }
 void Accounts::CreateUser()
 {
@@ -251,19 +231,16 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 }
 void Accounts::EditUserMenu()
 {
-<<<<<<< HEAD
 cout << "\n1--Edit Our Interest\n"
 "2--Edit Admin Status\n"
 "0--Return to Previous Menu\n\n"
 "Selection: ";
-=======
 	system("CLS");
 	cout << "\n1--Edit Our Interest\n"
 			"2--Edit Admin Status\n"
 			"0--Return to Previous Menu\n\n"
 			"Selection: ";
 
->>>>>>> origin/master
 }
 void Accounts::EditUser()
 {
@@ -345,7 +322,6 @@ cout << "\nUser not in DataBase!\n";
 }
 void Accounts::EditAdminStatus()
 {
-<<<<<<< HEAD
 char response;
 string userName;
 unsigned int i = 0;
@@ -425,7 +401,6 @@ else
 cout << "\nUser not in DataBase!\n";
 }
 }
-=======
 	char response;
 	string userName;
 	unsigned int i = 0;
@@ -537,5 +512,4 @@ void Accounts::DeleteUser()
 	{
 
 	}
->>>>>>> origin/master
 }
