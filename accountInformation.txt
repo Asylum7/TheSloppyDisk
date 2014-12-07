@@ -9,79 +9,35 @@ key
 Jack112
 password123
 
-Secret Service
 12345 Pennsylvania
 Reston
 VA
 12345
+90245
 very interested
 key
 0
-69Ryan_B
-987att2
+Jack112
+password123
 
-FBI
-1 Lincoln Ave.
-Washington D.C.
-VA
-234
-somewhat interested
-key
+me
+56
+idontcare
+fu
+10101
+ 
+ 
 0
-Noah1212
-letMeIn
-
-CIA
-987 Jefferson Blvd
-Baltimore
-MD
-754
-very interested
-key
-0
-ScottBOSS
-qwerty
-
-Saddleback College
-28000 Marguerite Pkwy
-Mission Viejo
-CA
-92692
-not interested
-nice to have
-0
-JoeKingBoy
-PunnyNo?
-
-Los Angeles Dodgers
-12345 Chevaz Ravine
-Los Angeles
-CA
-90277
-very interested
-nice to have
-1
-MiMyself
-tinkerbell1
-
-Ballas
-211 Skylark Dr
-Lake Forest
-CA
-92630
-very interested
-key
-1
-packerfan626
+joshisthebest
 123456
 
-Dam Right
-Talon Street
-Lake Forest
-CA
-92630
+a
+a
+a
+a
+2686664
  
-key
-1
-talon1c
-talon123
+ 
+0
+joshme
+123456
