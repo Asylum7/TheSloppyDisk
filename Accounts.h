@@ -1,36 +1,42 @@
 #ifndef ACCOUNTS_H_
 #define ACCOUNTS_H_
+
 #include<queue>
 #include<string>
 #include<iostream>
 #include<fstream>
 using namespace std;
+
 //struct to hold all the users account information.
 struct accInfo
 {
-string name;
-string address;
-string city;
-string state;
-int zip;
-string theirInterest;
-string ourInterest;
-bool adminStatus;
-string username;
-string password;
+	string name;
+	string address;
+	string city;
+	string state;
+	int    zip;
+	string theirInterest;
+	string ourInterest;
+	bool   adminStatus;
+	string username;
+	string password;
 };
+
 class Accounts {
 public:
-//default constructor not used, it will not allow the program to be function
-Accounts();
-//overloaded constructor
-Accounts(int i);
-virtual ~Accounts();
+	//default constructor not used, it will not allow the program to be function
+	Accounts();
+	//overloaded constructor
+	Accounts(int i);
+	virtual ~Accounts();
+
 //MUTATORS/////////////////////////////////////////////////////////////////////
-//upon successful login,
-//a new username and password will be added to the queue
-void SignUp();
+	//upon successful login,
+	//a new username and password will be added to the queue
+	void SignUp();
+
 //ACCESSORS////////////////////////////////////////////////////////////////////
+<<<<<<< HEAD
 <<<<<<< HEAD
 //returns true if login was successful
 bool LogIn(bool &adminStatus);
@@ -65,6 +71,8 @@ void EditUser();
 void EditInterest();
 void EditAdminStatus();
 =======
+=======
+>>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 	//returns true if login was successful
 	bool LogIn(bool &adminStatus);
 	//updates the current account text file
@@ -98,12 +106,18 @@ void EditAdminStatus();
 	void EditUser();
 	void EditInterest();
 	void EditAdminStatus();
+<<<<<<< HEAD
 	void DeleteUser();
 
 
 >>>>>>> origin/master
+=======
+
+
+>>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 private:
-vector<accInfo> accounts;
-int totalAccounts;
+	vector<accInfo> accounts;
+	int totalAccounts;
 };
+
 #endif /* ACCOUNTS_H_ */
