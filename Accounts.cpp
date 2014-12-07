@@ -1,4 +1,10 @@
+<<<<<<< HEAD
 #include "Accounts.h"
+=======
+#include "header.h"
+
+//creating an account will generate a queue of account names and passwords
+>>>>>>> origin/master
 Accounts::Accounts()
 {
 string name;
@@ -62,6 +68,7 @@ Accounts::~Accounts(){}
 //already created as well as for being a valid username of over a set length
 void Accounts::SignUp()
 {
+<<<<<<< HEAD
 string username;
 string password;
 string companyName;
@@ -153,6 +160,152 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 "please try again\n";
 }
 }while(!validUsername);
+=======
+	string username;
+	string password;
+	string companyName;
+	string address;
+	string city;
+	string state;
+	int zip;
+	int selection;
+	string theirInterest;
+	string passwordConfirm;
+	bool   validUsername = false;
+
+	//catch classes
+	class invalidPasswordLength{};
+	class invalidUsernameLength{};
+	class passwordConfermationFail{};
+	class usernameAlreadyTaken{};
+
+	do
+	{
+		try
+		{
+			cout << "Please enter a username: ";
+			getline(cin, username);
+
+			//error checking for if the username is already taken
+			if(CheckUsername(username))throw usernameAlreadyTaken();
+
+			//error checking for minimum length for username
+			if(username.length() < 5)throw invalidUsernameLength();
+
+			cout << "Please enter a password: ";
+			getline(cin, password);
+
+			//error checking for minimum password size
+			if(password.length() < 5)throw invalidPasswordLength();
+
+			cout << "Please confirm password: ";
+			getline(cin, passwordConfirm);
+
+			//error checking for account input
+			if(password != passwordConfirm)throw passwordConfermationFail();
+
+			//input company name from user
+			cout << "Please enter in your company name: ";
+			getline(cin, companyName);
+
+			//input address from user
+			cout << "Please enter in your address (street address): ";
+			getline(cin, address);
+
+			//input city from user
+			cout << "Please enter in your city: ";
+			getline(cin, city);
+
+			//input state from user
+			cout << "Please enter in your state: ";
+			getline(cin, state);
+
+			//input zip from user
+			cout << "Please enter in your zip code: ";
+			cin  >> zip;
+			cin.ignore(1000, '\n');
+
+			//input interest from user
+			cout << "\nWhat is your interest in the company?\n";
+			cout << "1-- Very Interested\n"
+					"2-- Somewhat Interested\n"
+					"3-- Not Interested\n"
+					"Selection: ";
+
+			if(cin  >> selection)
+			{
+				switch (selection)
+				{
+				case 1: theirInterest = "very interested";
+					   break;
+				case 2: theirInterest = "somewhat interested";
+					   break;
+				case 3: theirInterest = "not interested";
+					   break;
+				default: cout << "***INVALID INPUT***";
+				}
+			}
+			else
+			{
+				cout << "INVALID!";
+			}
+
+			cout << "\nAccount created! You may now log in\n";
+
+			//creating new instance of accInfo struct to fill with data
+			accInfo nextAccount;
+
+			//assigning the users new log in information
+			nextAccount.username = username;
+			nextAccount.password = password;
+
+			//Sets the class information from the inputs from the user
+			nextAccount.name          = companyName;
+			nextAccount.address       = address;
+			nextAccount.city          = city;
+			nextAccount.state         = state;
+			nextAccount.zip			  = zip;
+			nextAccount.theirInterest = theirInterest;
+
+			//setting defaults for all the rest of the information
+			nextAccount.ourInterest   = " ";
+			nextAccount.adminStatus   = 0;
+
+			accounts.push_back(nextAccount);
+
+			totalAccounts++;
+			validUsername = true;
+
+		}//END - try
+		catch(passwordConfermationFail)
+		{
+			cout << "::ATTENTION:: Passwords do not match, "
+					 "please try again\n";
+		}
+
+		catch(usernameAlreadyTaken)
+		{
+			cout << "::ATTENTION:: Username already taken, "
+					 "please try again\n";
+		}
+
+		catch(invalidUsernameLength)
+		{
+			cout << "::ATTENTION:: Invalid username, minimum of "
+					 "five characters required, "
+					 "please try again\n";
+		}
+
+		catch(invalidPasswordLength)
+		{
+
+			cout << "::ATTENTION:: Invalid password, minimum of "
+					 "five characters required, "
+					 "please try again\n";
+		}
+	}while(!validUsername);
+
+>>>>>>> origin/master
 }//END - SignUp
 //ACCESSORS////////////////////////////////////////////////////////////////////
 //The following method will allow the user to log into their account. It will
@@ -160,6 +313,7 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 //created queue of usernames and passwords
 bool Accounts::LogIn(bool &adminStatus)
 {
+<<<<<<< HEAD
 bool loginOk = false;
 adminStatus = false;
 int admin = 0;
@@ -194,6 +348,51 @@ cout << "::ERROR:: Invalid username or password, "
 }
 }while(!loginOk);
 return (loginOk);
+=======
+	bool loginOk = false;
+	adminStatus = false;
+	int admin = 0;
+	int count = 0;
+	string username;
+	string password;
+	int i =0;
+
+	do
+	{
+		cout << "Enter username: ";
+		getline(cin, username);
+		cout << "Enter password: ";
+		getline(cin, password);
+
+		loginOk = CheckLogin(username, password, i, count);
+
+
+		if(loginOk)
+		{
+			admin = accounts[count-1].adminStatus;
+			adminStatus = CheckAdmin(adminStatus, admin);
+
+			if (admin)
+			{
+				system("CLS");
+				cout << "\nLogin successful! Welcome back admin " << username << endl;
+			}
+			else
+			{
+				system("CLS");
+				cout << "\nLogin successful! Welcome back user " << username << endl;
+			}
+
+		}
+		else
+		{
+			cout << "::ERROR:: Invalid username or password, "
+					"please try again\n";
+		}
+	}while(!loginOk);
+
+	return (loginOk);
+>>>>>>> origin/master
 }//END - LogIn
 //Close accounts method will output to a file a current and comprehensive
 //list of all the usernames and passwords currently in the program

@@ -2,6 +2,7 @@
 #include "Accounts.h"
 void Accounts::AdminPrint()
 {
+<<<<<<< HEAD
 cout << "1--Search by Name\n"
 "2--Search by Company Name\n"
 "3--Search by City\n"
@@ -13,6 +14,21 @@ cout << "1--Search by Name\n"
 "0--Exit\n\n"
 "Selection: ";
 }
+=======
+	system("CLS");
+	cout <<  "1--Search by Name\n"
+			 "2--Search by Company Name\n"
+			 "3--Search by City\n"
+			 "4--Search by State\n"
+			 "5--Search by Zip\n"
+			 "6--Search by Their Interest\n"
+			 "7--Search by Our Interest\n"
+			 "8--Account Options\n"
+			 "0--Sign Off\n\n"
+			 "Selection: ";
+}
+
+>>>>>>> origin/master
 void Accounts::AdminSelection()
 {
 int selection;
@@ -49,13 +65,23 @@ default: cout << "***INVALID INPUT****";
 }
 void Accounts::AccountOptionsMenu()
 {
+<<<<<<< HEAD
 cout << "1--Create a User\n"
 "2--Edit a User\n"
 "0--Back to Previous Menu\n\n"
 "Selection: ";
+=======
+	system("CLS");
+	cout << "1--Create a User\n"
+			"2--Edit a User\n"
+			"3--Delete a User\n"
+			"0--Back to Previous Menu\n\n"
+			"Selection: ";
+>>>>>>> origin/master
 }
 void Accounts::AccountOptionsSelection()
 {
+<<<<<<< HEAD
 int accountSelection;
 while (accountSelection != 0)
 {
@@ -75,6 +101,32 @@ break;
 default: cout << "***INVALID INPUT****";
 }
 }
+=======
+	int accountSelection;
+
+	while (accountSelection != 0)
+	{
+		cout << endl << endl;
+		//Prints the menu for the admin
+		AccountOptionsMenu();
+
+		cin  >> accountSelection;
+		cin.ignore();
+
+		switch(accountSelection)
+		{
+		case 0:
+			break;
+		case 1: CreateUser();
+			break;
+		case 2: EditUser();
+			break;
+		case 3: DeleteUser();
+			break;
+		default: cout << "***INVALID INPUT****";
+		}
+	}
+>>>>>>> origin/master
 }
 void Accounts::CreateUser()
 {
@@ -199,10 +251,19 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 }
 void Accounts::EditUserMenu()
 {
+<<<<<<< HEAD
 cout << "\n1--Edit Our Interest\n"
 "2--Edit Admin Status\n"
 "0--Return to Previous Menu\n\n"
 "Selection: ";
+=======
+	system("CLS");
+	cout << "\n1--Edit Our Interest\n"
+			"2--Edit Admin Status\n"
+			"0--Return to Previous Menu\n\n"
+			"Selection: ";
+
+>>>>>>> origin/master
 }
 void Accounts::EditUser()
 {
@@ -284,6 +345,7 @@ cout << "\nUser not in DataBase!\n";
 }
 void Accounts::EditAdminStatus()
 {
+<<<<<<< HEAD
 char response;
 string userName;
 unsigned int i = 0;
@@ -363,4 +425,117 @@ else
 cout << "\nUser not in DataBase!\n";
 }
 }
+=======
+	char response;
+	string userName;
+	unsigned int i = 0;
+	bool sameUserName = false;
+	bool adminStatus = false;
+
+	for (unsigned int index = 0; index < accounts.size(); index++)
+	{
+		cout << accounts[index].username << endl;
+		if(accounts[index].adminStatus== 1)
+		{
+			cout << "ADMIN\n\n";
+		}
+		else
+		{
+			cout << "NOT ADMIN\n\n";
+		}
+	}
+
+	cout << "Enter the user name you would like to edit, press X to cancel: ";
+	getline(cin, userName);
+
+	if (userName != "X" && userName != "x")
+	{
+		while(i < accounts.size() && !sameUserName)
+		{
+			if(accounts[i].username == userName)
+			{
+				sameUserName = true;
+				break;
+			}
+			else if (sameUserName != true)
+			{
+				i++;
+			}
+		}
+
+		if (sameUserName == true)
+		{
+			if(accounts[i].adminStatus == 1)
+			{
+				adminStatus = true;
+			}
+			else
+			{
+				adminStatus = false;
+			}
+
+		if (adminStatus)
+		{
+			cout << "Would you like to demote this admin to a user? (Y or N)\n";
+			cout << "Response: ";
+			cin.get(response);
+
+			switch (response)
+			{
+			case 'Y': accounts[i].adminStatus = 0;
+					  cout << "\nDEMOTED\n";
+					  break;
+			case 'N': cout << "\nNO CHANGE!\n" ;
+					  break;
+			default: cout << "\nINVALID INPUT, ENTER Y or N\n";
+			}
+		}
+		else
+		{
+			cout << "Would you like to promote this user to a admin? (Y or N)\n";
+			cout << "Response: ";
+			cin.get(response);
+
+			switch (response)
+			{
+			case 'Y': accounts[i].adminStatus = 1;
+					  cout << "\nPROMOTED\n";
+					  break;
+			case 'N': cout << "\nNO CHANGE!\n" ;
+					  break;
+			default: cout << "\nINVALID INPUT, ENTER Y or N\n";
+			}
+		}
+		}
+		else
+		{
+			cout << "\nUser not in DataBase!\n";
+		}
+
+	}
+}
+
+void Accounts::DeleteUser()
+{
+	int selection = 0;
+	cout << endl;
+	for (unsigned int index = 1; index < accounts.size(); index++)
+	{
+		cout << index << ": Username: " << accounts[index].username << endl;
+		cout << "Company Name: " << accounts[index].name << endl << endl;
+	}
+
+	cout << "Which user would you like to delete? Type 0 to exit: ";
+	cin  >> selection;
+
+	if(selection != 0)
+	{
+		cout << "ERASED: " << accounts[selection].username;
+		accounts.erase(accounts.begin() + selection);
+	}
+	else
+	{
+
+	}
+>>>>>>> origin/master
 }
