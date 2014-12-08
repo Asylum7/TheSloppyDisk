@@ -142,7 +142,7 @@ void Accounts::SearchZip()
 	unsigned int i = 0;
 
 	cout << "Enter the zip of the company you would like to search for: ";
-	cin  >> searchItem;
+	searchItem = GetValidInt(99999, 00000);
 
 	cout << "Companies located in the zip code " << searchItem << ":\n";
 	while (i < accounts.size())
@@ -177,63 +177,62 @@ void Accounts::SearchTheirInterest()
 	int response = 1;
 	while (response != 0)
 	{
-	cout << "Search for users with interest:\n"
-			"1--Very Interested\n"
-			"2--Somewhat Interested\n"
-			"3--Not Interested\n"
-			"0--Return to Previous Menu\n\n"
-			"Selection: ";
+		cout << "Search for users with interest:\n"
+				"1--Very Interested\n"
+				"2--Somewhat Interested\n"
+				"3--Not Interested\n"
+				"0--Return to Previous Menu\n\n"
+				"Selection: ";
 
-	cin  >> response;
-	cin.ignore(1000, '\n');
+		response = GetValidInt(3, 0);
 
-	switch (response)
-	{
-		case 1: searchItem = "very interested";
-			break;
-		case 2: searchItem = "somewhat interested";
-			break;
-		case 3: searchItem = "not interested";
-			break;
-		case 0:
-			break;
-		default: cout << "\nINVALID INPUT\n";
-	}
-
-	cout << endl;
-	if(response == 1)
-	{
-		for (unsigned int index = 0; index < accounts.size(); index++)
+		switch (response)
 		{
-			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+			case 1: searchItem = "very interested";
+				break;
+			case 2: searchItem = "somewhat interested";
+				break;
+			case 3: searchItem = "not interested";
+				break;
+			case 0:
+				break;
+			default: cout << "\nINVALID INPUT\n";
+		}
+
+		cout << endl;
+		if(response == 1)
+		{
+			for (unsigned int index = 0; index < accounts.size(); index++)
 			{
-				cout << "Username: " << accounts[index].username << endl;
-				cout << "Company Name: " << accounts[index].name << endl << endl;
+				if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+				{
+					cout << "Username: " << accounts[index].username << endl;
+					cout << "Company Name: " << accounts[index].name << endl << endl;
+				}
 			}
 		}
-	}
-	else if (response == 2)
-	{
-		for (unsigned int index = 0; index < accounts.size(); index++)
+		else if (response == 2)
 		{
-			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+			for (unsigned int index = 0; index < accounts.size(); index++)
 			{
-				cout << "Username: " << accounts[index].username << endl;
-				cout << "Company Name: " << accounts[index].name << endl << endl;
+				if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+				{
+					cout << "Username: " << accounts[index].username << endl;
+					cout << "Company Name: " << accounts[index].name << endl << endl;
+				}
 			}
 		}
-	}
-	else if (response == 3)
-	{
-		for (unsigned int index = 0; index < accounts.size(); index++)
+		else if (response == 3)
 		{
-			if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+			for (unsigned int index = 0; index < accounts.size(); index++)
 			{
-				cout << "Username: " << accounts[index].username << endl;
-				cout << "Company Name: " << accounts[index].name << endl << endl;
+				if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+				{
+					cout << "Username: " << accounts[index].username << endl;
+					cout << "Company Name: " << accounts[index].name << endl << endl;
+				}
 			}
 		}
-	}
 	}
 }
 
@@ -249,8 +248,7 @@ void Accounts::SearchOurInterest()
 				"0--Return to Previous Menu\n\n"
 				"Selection: ";
 
-		cin  >> response;
-		cin.ignore(1000, '\n');
+		response = GetValidInt(2, 0);
 
 		cout << endl;
 		switch (response)

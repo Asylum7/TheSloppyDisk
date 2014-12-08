@@ -138,8 +138,7 @@ void Accounts::SignUp()
 
 			//input zip from user
 			cout << "Please enter in your zip code: ";
-			cin  >> zip;
-			cin.ignore(1000, '\n');
+			zip = GetValidInt(99999, 0);
 
 			//input interest from user
 			cout << "\nWhat is your interest in the company?\n";
@@ -148,10 +147,10 @@ void Accounts::SignUp()
 					"3-- Not Interested\n"
 					"Selection: ";
 
-			if(cin  >> selection)
+			selection = GetValidInt(3,  0);
+
+			switch (selection)
 			{
-				switch (selection)
-				{
 				case 1: theirInterest = "very interested";
 					   break;
 				case 2: theirInterest = "somewhat interested";
@@ -159,12 +158,8 @@ void Accounts::SignUp()
 				case 3: theirInterest = "not interested";
 					   break;
 				default: cout << "***INVALID INPUT***";
-				}
 			}
-			else
-			{
-				cout << "INVALID!";
-			}
+
 
 			cout << "\nAccount created! You may now log in\n";
 
@@ -184,7 +179,7 @@ void Accounts::SignUp()
 			nextAccount.theirInterest = theirInterest;
 
 			//setting defaults for all the rest of the information
-			nextAccount.ourInterest   = " ";
+			nextAccount.ourInterest   = "nice to have";
 			nextAccount.adminStatus   = 0;
 
 			accounts.push_back(nextAccount);
@@ -335,18 +330,26 @@ bool Accounts::CheckLogin(string username, string password, unsigned int i,
 //prints the current list of all usernames and passwords. FOR DEV MODE ONLY
 void Accounts::Print()
 {
+	cout << "USER LIST: \n\n";
 	for(unsigned int i = 0; i < accounts.size(); i++)
 	{
-		cout << accounts[i].name << endl;
-		cout << accounts[i].address << endl;
-		cout << accounts[i].city << endl;
-		cout << accounts[i].state << endl;
+		cout << "Company Name: " << accounts[i].name << endl;
+		cout << "Company Address: " << accounts[i].address << endl;
+		cout << accounts[i].city << ", ";
+		cout << accounts[i].state << " ";
 		cout << accounts[i].zip << endl;
-		cout << accounts[i].theirInterest << endl;
-		cout << accounts[i].ourInterest << endl;
-		cout << accounts[i].adminStatus << endl;
-		cout << accounts[i].username << endl;
-		cout << accounts[i].password << endl;
+		cout << "Their Interest: " << accounts[i].theirInterest << endl;
+		cout << "Our Interest: " << accounts[i].ourInterest << endl;
+		if (accounts[i].adminStatus == 0)
+		{
+			cout << "Admin Status: Not Admin\n";
+		}
+		else
+		{
+			cout << "Admin Status: Admin\n";
+		}
+
+		cout << "Username: " << accounts[i].username << endl;
 		if(i <= accounts.size())cout << endl;
 	}
 }//END - Print

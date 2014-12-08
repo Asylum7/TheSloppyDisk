@@ -25,8 +25,7 @@ void Accounts::AdminSelection()
 		//Prints the menu for the admin
 		AdminPrint();
 
-		cin  >> selection;
-		cin.ignore();
+		selection = GetValidInt(9, 0);
 
 		switch(selection)
 		{
@@ -59,6 +58,7 @@ void Accounts::AccountOptionsMenu()
 	cout << "1--Create a User\n"
 			"2--Edit a User\n"
 			"3--Delete a User\n"
+			"4--Print Customer List\n"
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
 }
@@ -73,8 +73,7 @@ void Accounts::AccountOptionsSelection()
 		//Prints the menu for the admin
 		AccountOptionsMenu();
 
-		cin  >> accountSelection;
-		cin.ignore();
+		accountSelection = GetValidInt(4, 0);
 
 		switch(accountSelection)
 		{
@@ -85,6 +84,8 @@ void Accounts::AccountOptionsSelection()
 		case 2: EditUser();
 			break;
 		case 3: DeleteUser();
+			break;
+		case 4: Print();
 			break;
 		default: cout << "***INVALID INPUT****";
 		}
@@ -154,12 +155,10 @@ void Accounts::CreateUser()
 
 			//input zip from user
 			cout << "Please enter in the zip code: ";
-			cin  >> zip;
-			cin.ignore(1000, '\n');
+			zip = GetValidInt(99999, 0);
 
 			cout << "Enter 0 for Regular user, Enter 1 for Admin: ";
-			cin  >> admin;
-			cin.ignore(1000, '\n');
+			admin = GetValidInt(1, 0);
 
 
 			if (admin != 1)
@@ -169,14 +168,13 @@ void Accounts::CreateUser()
 					"2--Nice To Have\n\n"
 					"Selection: ";
 
-				cin >> selection;
-				cin.ignore(1000, '\n');
+				selection = GetValidInt(2, 1);
 
 				switch (selection)
 				{
-					case 1: ourInterest = "Key";
+					case 1: ourInterest = "key";
 						break;
-					case 2: ourInterest = "Nice to Have";
+					case 2: ourInterest = "nice to have";
 						break;
 					default: cout << "***INVALID INPUT***";
 				}
@@ -262,8 +260,7 @@ void Accounts::EditUser()
 	{
 		EditUserMenu();
 
-		cin >> selection;
-		cin.ignore(1000, '\n');
+		selection = GetValidInt(2, 0);
 
 		switch(selection)
 		{
@@ -320,8 +317,7 @@ void Accounts::EditInterest()
 					"0--Return to Previous Screen\n\n"
 					"Selection: ";
 
-			cin >> selection;
-			cin.ignore(1000, '\n');
+			selection = GetValidInt(2, 0);
 
 			switch (selection)
 			{
@@ -448,7 +444,7 @@ void Accounts::DeleteUser()
 	}
 
 	cout << "Which user would you like to delete? Type 0 to exit: ";
-	cin  >> selection;
+	selection = GetValidInt(accounts.size() - 1, 0);
 
 	if(selection != 0)
 	{

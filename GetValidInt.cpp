@@ -13,12 +13,12 @@ int GetValidInt(int upper, int lower)
 		invalid = false;
 		if(!CheckDigit(response))
 		{
-			cout << "Please enter a number: ";
+			cout << "\n\nERROR!\n\nPlease enter a number: ";
 			invalid = true;
 		}
 		else if(atoi(response.c_str()) < lower || atoi(response.c_str()) > upper)
 		{
-			cout << "Please enter a number between " << lower << " and "
+			cout << "\n\nERROR!\n\nPlease enter a number between " << lower << " and "
 				 << upper << ": ";
 			invalid = true;
 		}
