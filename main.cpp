@@ -8,7 +8,7 @@
 void MainMenu();
 int main()
 {
-
+	ResizeWindow();
 	bool adminStatus = false;
 	Accounts test;
 	int selection;
@@ -18,6 +18,7 @@ int main()
 
 		while (selection != 0)
 		{
+			MenuHeader();
 			cout << "\nPlease make a selection:\n"
 			"1--Sign Up\n"
 			"2--Log in\n"
@@ -34,6 +35,7 @@ int main()
 				system("CLS");
 				if (adminStatus == true)
 				{
+					AdminMenuHeader();
 					test.AdminSelection();
 				}
 				else

@@ -61,6 +61,7 @@ void ShoppingCart(vector<Earth> &eBots,
 		set: cout << endl;
 
 		found = false;
+		ShoppingCartHeader();
 		cout << MAKE_CHANGES;
 		response = GetValidInt(3,0);
         system("CLS");
@@ -74,6 +75,7 @@ void ShoppingCart(vector<Earth> &eBots,
 				// User inputs yes to edit
 				case 1:
 				// INPUT - user selects a Bot to edit, or to view the cart
+				ShoppingCartHeader();
 				cout <<  SHOP_CART_MENU;
 				response = GetValidInt(3,0);
 				system("CLS");
@@ -108,6 +110,7 @@ void ShoppingCart(vector<Earth> &eBots,
 							}
 							if(found)
 							{
+								ShoppingCartHeader();
 								cout << EDIT_MENU;
 								response = GetValidInt(4,0);
 								system("CLS");
@@ -158,6 +161,7 @@ void ShoppingCart(vector<Earth> &eBots,
 									{
 										cout << "\nNo Earth Bots in cart.\n";
 									}
+									ShoppingCartHeader();
 									cout << EDIT_MENU;
 									response = GetValidInt(4,0);
 

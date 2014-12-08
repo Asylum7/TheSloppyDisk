@@ -43,9 +43,6 @@ void AdminMenuHeader();
 
 
 
-
-
-
 const string CHECK_OUT = "\nCHECK OUT\n"
 						 "-------------\n"
 						 "1.    Purchase Order\n"

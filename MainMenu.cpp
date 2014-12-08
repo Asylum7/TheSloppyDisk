@@ -65,6 +65,7 @@ void MainMenu()
 	totalBots = 0;
 
 	// OUT & IN - Main Menu
+	MenuHeader();
 	cout << MAIN_MENU;
 	response = GetValidInt(4,0);
 	system("CLS");
@@ -79,6 +80,7 @@ void MainMenu()
 
 		// INPUT & OUTPUT - User will input which type of robot to buy
 		case 2:
+		RobotCatalogMenu();
 		cout << PURCHASE_MENU;
 		response = GetValidInt(3,0);
 		system("CLS");
@@ -100,6 +102,7 @@ void MainMenu()
 		cout << "\nCustomer Reviews/Testimonials go here\n";
 		break;
 		}
+		MenuHeader();
 		cout << MAIN_MENU;
 		response = GetValidInt(4,0);
 

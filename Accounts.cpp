@@ -182,7 +182,32 @@ void Accounts::SignUp()
 			nextAccount.ourInterest   = "nice to have";
 			nextAccount.adminStatus   = 0;
 
-			accounts.push_back(nextAccount);
+			//This part will place the newly created user information into
+			//the proper place in the alphabetized list
+			int  index = 0;
+			bool notFound = true;
+
+			while(index < totalAccounts && notFound)
+			{
+				if(nextAccount.name < accounts[index].name)
+				{
+					if(index == 0)
+					{
+
+					}
+					else if(index == totalAccounts - 1)
+					{
+						accounts.push_back(nextAccount);
+					}
+				}
+
+				index++;
+			}
+
+
+
+
+
 
 			totalAccounts++;
 			validUsername = true;
