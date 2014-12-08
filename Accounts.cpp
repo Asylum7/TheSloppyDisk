@@ -548,7 +548,7 @@ bool Accounts::CheckUsername(string username)
 
 bool Accounts::CheckAdmin(bool adminStatus, int admin)
 {
-
+	//Checks Admin
 	if (admin == 1)
 	{
 		adminStatus = true;
