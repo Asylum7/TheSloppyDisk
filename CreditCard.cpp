@@ -5,6 +5,7 @@
 
 string CreditCard()
 {
+	ShoppingCartHeader();
 	bool valid = false;
 	string input;
 	string lastFour;
@@ -81,5 +82,8 @@ string CreditCard()
 	string a(creditCard);
 	lastFour = a.substr(15,18);
 
+	cout << endl << endl;
+	system("pause");
 	return lastFour;
+
 }

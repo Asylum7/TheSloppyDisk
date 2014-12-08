@@ -3,6 +3,7 @@
 //Allows admin to Search for a user name
 void Accounts::SearchUserName()
 {
+	AdminMenuHeader();
 	bool sameUserName = false;
 	string searchItem;
 
@@ -20,11 +21,14 @@ void Accounts::SearchUserName()
 	{
 		cout << "Did not find user: " << searchItem;
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 //Allows admin to Search for a company name
 void Accounts::SearchCompanyName()
 {
+	AdminMenuHeader();
 	string searchItem;
 	bool companyName = false;
 	unsigned int i = 0;
@@ -58,11 +62,14 @@ void Accounts::SearchCompanyName()
 	{
 		cout << "Company name: " << searchItem << " was NOT found";
 	}
+	cout << endl << endl;;
+	system("pause");
 }
 
 //Allows admins to search by city
 void Accounts::SearchCity()
 {
+	AdminMenuHeader();
 	string searchItem;
 	bool found = false;
 	unsigned int i = 0;
@@ -95,11 +102,14 @@ void Accounts::SearchCity()
 	{
 		cout << " None";
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 //Allows admints to search by state
 void Accounts::SearchState()
 {
+	AdminMenuHeader();
 	string searchItem;
 	bool found = false;
 	unsigned int i = 0;
@@ -132,11 +142,14 @@ void Accounts::SearchState()
 	{
 		cout << " None";
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 //Allows admints to search by zip
 void Accounts::SearchZip()
 {
+	AdminMenuHeader();
 	int searchItem;
 	bool found = false;
 	unsigned int i = 0;
@@ -169,10 +182,13 @@ void Accounts::SearchZip()
 	{
 		cout << " None";
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::SearchTheirInterest()
 {
+	AdminMenuHeader();
 	string searchItem;
 	int response = 1;
 	while (response != 0)
@@ -234,10 +250,13 @@ void Accounts::SearchTheirInterest()
 			}
 		}
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::SearchOurInterest()
 {
+	AdminMenuHeader();
 	string searchItem;
 	int response = 1;
 	while (response != 0)
@@ -285,4 +304,6 @@ void Accounts::SearchOurInterest()
 			}
 		}
 	}
+	cout << endl << endl;
+	system("pause");
 }

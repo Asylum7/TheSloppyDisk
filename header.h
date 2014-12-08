@@ -69,7 +69,7 @@ const string MAIN_MENU = "\nMAIN MENU\n"
 						 "2.    Purchase Robot\n"
 						 "3.    Shopping Cart\n"
 						 "4.    Customer Reviews\n"
-						 "0.    Exit Brochure\n\n"
+						 "0.    Sign Off\n\n"
 						 "Selection: ";
 
 const string PURCHASE_MENU = "\nPURCHASE MENU\n"

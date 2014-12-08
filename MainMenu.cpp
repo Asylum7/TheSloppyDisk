@@ -35,6 +35,7 @@ void ExternalLink(string webLink);
  ******************************************************************************/
 void MainMenu()
 {
+	ShoppingCartHeader();
 	string numberList[100];
 	ofstream oFile;
 	oFile.open("modelNum.txt");
@@ -68,7 +69,7 @@ void MainMenu()
 	MenuHeader();
 	cout << MAIN_MENU;
 	response = GetValidInt(4,0);
-	system("CLS");
+	ShoppingCartHeader();
 
 	while(response != 0)
 	{
@@ -90,7 +91,10 @@ void MainMenu()
 		case 3:
 		if(totalBots == 0)
 		{
+			ShoppingCartHeader();
 			cout << "\nCart is empty\n";
+			cout << endl << endl;
+			system("pause");
 		}
 		else
 		{

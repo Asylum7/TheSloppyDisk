@@ -2,7 +2,7 @@
 
 void Accounts::AdminPrint()
 {
-//CLEAR HERE
+	AdminMenuHeader();
 	cout <<  "1--Search by Name\n"
 			 "2--Search by Company Name\n"
 			 "3--Search by City\n"
@@ -54,14 +54,13 @@ void Accounts::AdminSelection()
 
 void Accounts::AccountOptionsMenu()
 {
-//CLEAR HERE
+	AdminMenuHeader();
 	cout << "1--Create a User\n"
 			"2--Edit a User\n"
 			"3--Delete a User\n"
 			"4--Print Customer List\n"
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
-//CLEAR HERE
 }
 
 void Accounts::AccountOptionsSelection()
@@ -241,21 +240,23 @@ void Accounts::CreateUser()
 					 "please try again\n";
 		}
 	}while(!validUsername);
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::EditUserMenu()
 {
-
+	AdminMenuHeader();
 	cout << "\n1--Edit Our Interest\n"
 			"2--Edit Admin Status\n"
 			"0--Return to Previous Menu\n\n"
 			"Selection: ";
-//CLEAR HERE
 
 }
 
 void Accounts::EditUser()
 {
+	AdminMenuHeader();
 	int selection;
 
 	while (selection != 0)
@@ -275,10 +276,13 @@ void Accounts::EditUser()
 			default: cout << "***INVALID INPUT****";
 		}
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::EditInterest()
 {
+	AdminMenuHeader();
 	int selection;
 	string userName;
 	unsigned int i = 0;
@@ -342,10 +346,13 @@ void Accounts::EditInterest()
 			cout << "\nUser not in DataBase!\n";
 		}
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::EditAdminStatus()
 {
+	AdminMenuHeader();
 	char response;
 	string userName;
 	unsigned int i = 0;
@@ -433,10 +440,13 @@ void Accounts::EditAdminStatus()
 		}
 
 	}
+	cout << endl << endl;
+	system("pause");
 }
 
 void Accounts::DeleteUser()
 {
+	AdminMenuHeader();
 	int selection = 0;
 	cout << endl;
 	for (unsigned int index = 1; index < accounts.size(); index++)
@@ -457,4 +467,6 @@ void Accounts::DeleteUser()
 	{
 
 	}
+	cout << endl << endl;
+	system("pause");
 }

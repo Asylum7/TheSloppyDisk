@@ -1,36 +1,3 @@
-Ballas
-211 Skylark Dr
-Lake Forest
-CA
-92630
-very interested
-nice to have
-1
-packerfan626
-123456
-
-CIA
-987 Jefferson Blvd
-Baltimore
-MD
-754
-very interested
-key
-0
-ScottBOSS
-qwerty
-
-FBI
-1 Lincoln Ave.
-Washington D.C.
-VA
-234
-somewhat interested
-key
-0
-Noah1212
-letMeIn
-
 Los Angeles Airport
 12345 Main
 El Segundo
@@ -41,28 +8,6 @@ key
 0
 Jack112
 password123
-
-Los Angeles Dodgers
-12345 Chevaz Ravine
-Los Angeles
-CA
-90277
-very interested
-nice to have
-0
-MiMyself
-tinkerbell1
-
-Saddleback College
-28000 Marguerite Pkwy
-Mission Viejo
-CA
-92692
-not interested
-nice to have
-1
-JoeKingBoy
-PunnyNo
 
 Secret Service
 12345 Pennsylvania
@@ -75,13 +20,68 @@ key
 69Ryan_B
 987att2
 
-Talon Company
-Talon Street
+FBI
+1 Lincoln Ave.
+Washington D.C.
+VA
+234
+somewhat interested
+key
+0
+Noah1212
+letMeIn
+
+CIA
+987 Jefferson Blvd
+Baltimore
+MD
+754
+very interested
+key
+0
+ScottBOSS
+qwerty
+
+Saddleback College
+28000 Marguerite Pkwy
+Mission Viejo
+CA
+92692
+not interested
+nice to have
+1
+JoeKingBoy
+PunnyNo?
+
+Los Angeles Dodgers
+12345 Chevaz Ravine
+Los Angeles
+CA
+90277
+very interested
+nice to have
+0
+MiMyself
+tinkerbell1
+
+Ballas
+211 Skylark Dr
 Lake Forest
 CA
 92630
+very interested
+nice to have
+1
+packerfan626
+123456
+
+Asylum Inc.
+42 Towel Road
+Lake Forest
+Ca.
+92630
 somewhat interested
- 
-0
-Talon1C
-talon
+nice to have
+1
+jdavis107
+dragonslayer
