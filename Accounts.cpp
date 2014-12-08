@@ -1,15 +1,6 @@
-<<<<<<< HEAD
-#include "Accounts.h"
-<<<<<<< HEAD
-=======
 #include "header.h"
 
 //creating an account will generate a queue of account names and passwords
->>>>>>> origin/master
-=======
-
-//creating an account will generate a queue of account names and passwords
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 Accounts::Accounts()
 {
 	string name;
@@ -86,102 +77,6 @@ Accounts::~Accounts(){}
 //already created as well as for being a valid username of over a set length
 void Accounts::SignUp()
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-string username;
-string password;
-string companyName;
-string address;
-string city;
-string state;
-int zip;
-string passwordConfirm;
-bool validUsername = false;
-//catch classes
-class invalidPasswordLength{};
-class invalidUsernameLength{};
-class passwordConfermationFail{};
-class usernameAlreadyTaken{};
-do
-{
-try
-{
-cout << "Please enter a username: ";
-getline(cin, username);
-//error checking for if the username is already taken
-if(CheckUsername(username))throw usernameAlreadyTaken();
-//error checking for minimum length for username
-if(username.length() < 5)throw invalidUsernameLength();
-cout << "Please enter a password: ";
-getline(cin, password);
-//error checking for minimum password size
-if(password.length() < 5)throw invalidPasswordLength();
-cout << "Please confirm password: ";
-getline(cin, passwordConfirm);
-//error checking for account input
-if(password != passwordConfirm)throw passwordConfermationFail();
-//input company name from user
-cout << "Please enter in your company name: ";
-getline(cin, companyName);
-//input address from user
-cout << "Please enter in your address (street address): ";
-getline(cin, address);
-//input city from user
-cout << "Please enter in your city: ";
-getline(cin, city);
-//input state from user
-cout << "Please enter in your state: ";
-getline(cin, state);
-//input zip from user
-cout << "Please enter in your zip code: ";
-cin >> zip;
-cin.ignore(1000, '\n');
-cout << "Account created! You may now log in\n";
-//creating new instance of accInfo struct to fill with data
-accInfo nextAccount;
-//assigning the users new log in information
-nextAccount.username = username;
-nextAccount.password = password;
-//Sets the class information from the inputs from the user
-nextAccount.name = companyName;
-nextAccount.address = address;
-nextAccount.city = city;
-nextAccount.state = state;
-nextAccount.zip	= zip;
-//setting defaults for all the rest of the information
-nextAccount.theirInterest = " ";
-nextAccount.ourInterest = " ";
-nextAccount.adminStatus = 0;
-accounts.push_back(nextAccount);
-totalAccounts++;
-validUsername = true;
-}//END - try
-catch(passwordConfermationFail)
-{
-cout << "::ATTENTION:: Passwords do not match, "
-"please try again\n";
-}
-catch(usernameAlreadyTaken)
-{
-cout << "::ATTENTION:: Username already taken, "
-"please try again\n";
-}
-catch(invalidUsernameLength)
-{
-cout << "::ATTENTION:: Invalid username, minimum of "
-"five characters required, "
-"please try again\n";
-}
-catch(invalidPasswordLength)
-{
-cout << "::ATTENTION:: Invalid password, minimum of "
-"five characters required, "
-"please try again\n";
-}
-}while(!validUsername);
-=======
-=======
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 	string username;
 	string password;
 	string companyName;
@@ -189,11 +84,8 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 	string city;
 	string state;
 	int zip;
-<<<<<<< HEAD
 	int selection;
 	string theirInterest;
-=======
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 	string passwordConfirm;
 	bool   validUsername = false;
 
@@ -249,7 +141,6 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 			cin  >> zip;
 			cin.ignore(1000, '\n');
 
-<<<<<<< HEAD
 			//input interest from user
 			cout << "\nWhat is your interest in the company?\n";
 			cout << "1-- Very Interested\n"
@@ -276,10 +167,6 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 			}
 
 			cout << "\nAccount created! You may now log in\n";
-=======
-
-			cout << "Account created! You may now log in\n";
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 
 			//creating new instance of accInfo struct to fill with data
 			accInfo nextAccount;
@@ -294,15 +181,9 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 			nextAccount.city          = city;
 			nextAccount.state         = state;
 			nextAccount.zip			  = zip;
-<<<<<<< HEAD
 			nextAccount.theirInterest = theirInterest;
 
 			//setting defaults for all the rest of the information
-=======
-
-			//setting defaults for all the rest of the information
-			nextAccount.theirInterest = " ";
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 			nextAccount.ourInterest   = " ";
 			nextAccount.adminStatus   = 0;
 
@@ -340,10 +221,6 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 		}
 	}while(!validUsername);
 
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 }//END - SignUp
 
 
@@ -354,45 +231,6 @@ cout << "::ATTENTION:: Invalid password, minimum of "
 //created queue of usernames and passwords
 bool Accounts::LogIn(bool &adminStatus)
 {
-<<<<<<< HEAD
-<<<<<<< HEAD
-bool loginOk = false;
-adminStatus = false;
-int admin = 0;
-int count = 0;
-string username;
-string password;
-int i =0;
-do
-{
-cout << "Enter username: ";
-getline(cin, username);
-cout << "Enter password: ";
-getline(cin, password);
-loginOk = CheckLogin(username, password, i, count);
-if(loginOk)
-{
-admin = accounts[count-1].adminStatus;
-adminStatus = CheckAdmin(adminStatus, admin);
-if (admin)
-{
-cout << "Login successful! Welcome back admin " << username << endl;
-}
-else
-{
-cout << "Login successful! Welcome back user " << username << endl;
-}
-}
-else
-{
-cout << "::ERROR:: Invalid username or password, "
-"please try again\n";
-}
-}while(!loginOk);
-return (loginOk);
-=======
-=======
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 	bool loginOk = false;
 	adminStatus = false;
 	int admin = 0;
@@ -418,7 +256,6 @@ return (loginOk);
 
 			if (admin)
 			{
-<<<<<<< HEAD
 				system("CLS");
 				cout << "\nLogin successful! Welcome back admin " << username << endl;
 			}
@@ -426,13 +263,6 @@ return (loginOk);
 			{
 				system("CLS");
 				cout << "\nLogin successful! Welcome back user " << username << endl;
-=======
-				cout << "Login successful! Welcome back admin " << username << endl;
-			}
-			else
-			{
-				cout << "Login successful! Welcome back user " << username << endl;
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 			}
 
 		}
@@ -444,10 +274,6 @@ return (loginOk);
 	}while(!loginOk);
 
 	return (loginOk);
-<<<<<<< HEAD
->>>>>>> origin/master
-=======
->>>>>>> parent of 35e8e51... Integrated Completed Project From Josh's email
 }//END - LogIn
 
 //Close accounts method will output to a file a current and comprehensive
