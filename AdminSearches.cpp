@@ -9,12 +9,13 @@ void Accounts::SearchUserName()
 	cout << "Enter the user name you would like to search for: ";
 	getline(cin, searchItem);
 
+	StringToupper(searchItem);
+
 	sameUserName = CheckUsername(searchItem);
 
 	if (sameUserName == true)
 	{
 		cout << "Found user: " << searchItem;
-
 	}
 	else
 	{
@@ -31,6 +32,8 @@ void Accounts::SearchCompanyName()
 
 	cout << "Enter the name of the company you would like to search for: ";
 	getline(cin, searchItem);
+
+	StringToupper(searchItem);
 
 	while (i < accounts.size() && !companyName && accounts[i].adminStatus != 1)
 	{
@@ -70,6 +73,8 @@ void Accounts::SearchCity()
 	cout << "Enter the city of the company you would like to search for: ";
 	getline(cin, searchItem);
 
+	StringToupper(searchItem);
+
 	cout << "Companies located in the city " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
@@ -106,6 +111,8 @@ void Accounts::SearchState()
 
 	cout << "Enter the state of the company you would like to search for: ";
 	getline(cin, searchItem);
+
+	StringToupper(searchItem);
 
 	cout << "Companies located in the state " << searchItem << ":\n";
 	while (i < accounts.size())

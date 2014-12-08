@@ -40,6 +40,7 @@ void ShoppingCartHeader();
 void HelpMenuHeader();
 void RobotCatalogMenu();
 void AdminMenuHeader();
+void StringToupper(string &word1);
 
 
 

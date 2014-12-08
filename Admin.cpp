@@ -2,7 +2,7 @@
 
 void Accounts::AdminPrint()
 {
-	system("CLS");
+	AdminMenuHeader();
 	cout <<  "1--Search by Name\n"
 			 "2--Search by Company Name\n"
 			 "3--Search by City\n"

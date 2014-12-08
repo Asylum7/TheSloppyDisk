@@ -74,6 +74,7 @@ public:
 
 private:
 	vector<accInfo> accounts;
+	vector<accInfo>::iterator it;
 	int totalAccounts;
 };
 

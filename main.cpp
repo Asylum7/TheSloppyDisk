@@ -32,7 +32,6 @@ int main()
 				case 2: cout << endl;
 				test.LogIn(adminStatus);
 
-				system("CLS");
 				if (adminStatus == true)
 				{
 					AdminMenuHeader();

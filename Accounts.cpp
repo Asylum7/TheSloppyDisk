@@ -170,6 +170,11 @@ void Accounts::SignUp()
 			nextAccount.username = username;
 			nextAccount.password = password;
 
+			StringToupper(companyName);
+			StringToupper(address);
+			StringToupper(city);
+			StringToupper(state);
+
 			//Sets the class information from the inputs from the user
 			nextAccount.name          = companyName;
 			nextAccount.address       = address;
@@ -187,28 +192,24 @@ void Accounts::SignUp()
 			int  index = 0;
 			bool notFound = true;
 
+			it = accounts.begin();
+
 			while(index < totalAccounts && notFound)
 			{
 				if(nextAccount.name < accounts[index].name)
 				{
-					if(index == 0)
-					{
-
-					}
-					else if(index == totalAccounts - 1)
-					{
-						accounts.push_back(nextAccount);
-					}
+					accounts.insert(it, nextAccount);
+					notFound = false;
 				}
-
+				else if(index == totalAccounts - 1)
+				{
+					accounts.push_back(nextAccount);
+					notFound = false;
+				}
+				it++;
 				index++;
 			}
-
-
-
-
-
-
+			it = accounts.begin();
 			totalAccounts++;
 			validUsername = true;
 

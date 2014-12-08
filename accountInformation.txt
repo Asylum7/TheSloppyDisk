@@ -1,6 +1,17 @@
-Ballas
-211 Skylark Dr
-Lake Forest
+APPLE
+123 APPLE RD
+APPLEVILLE
+AP
+78945
+very interested
+nice to have
+0
+Apple
+123456
+
+BALLAS
+211 SKYLARK DR
+LAKE FOREST
 CA
 92630
 very interested
@@ -10,7 +21,7 @@ packerfan626
 123456
 
 CIA
-987 Jefferson Blvd
+987 JEFFERSON BLVD
 Baltimore
 MD
 754
@@ -21,8 +32,8 @@ ScottBOSS
 qwerty
 
 FBI
-1 Lincoln Ave.
-Washington D.C.
+1 LINCOLN AVE.
+WASHINGTON D.C.
 VA
 234
 somewhat interested
@@ -31,9 +42,9 @@ key
 Noah1212
 letMeIn
 
-Los Angeles Airport
-12345 Main
-El Segundo
+LOS ANGELES AIRPORT
+12345 MAIN
+EL SEGUNDO
 CA
 90245
 very interested
@@ -42,9 +53,9 @@ key
 Jack112
 password123
 
-Los Angeles Dodgers
-12345 Chevaz Ravine
-Los Angeles
+LOS ANGELES DODGERS
+12345 CHEVAZ RAVINE
+LOS ANGELES
 CA
 90277
 very interested
@@ -53,9 +64,9 @@ nice to have
 MiMyself
 tinkerbell1
 
-Saddleback College
-28000 Marguerite Pkwy
-Mission Viejo
+SADDLEBACK COLLEGE
+28000 MARGUERITE PKWY
+MISSION VIEJO
 CA
 92692
 not interested
@@ -64,9 +75,9 @@ nice to have
 JoeKingBoy
 PunnyNo
 
-Secret Service
-12345 Pennsylvania
-Reston
+SECRET SERVICE
+12345 PENNSYLVANIA
+RESTON
 VA
 12345
 very interested
@@ -75,13 +86,13 @@ key
 69Ryan_B
 987att2
 
-Talon Company
-Talon Street
-Lake Forest
+TALON COMPANY
+TALON STREET
+LAKE FOREST
 CA
 92630
 somewhat interested
  
 0
-Talon1C
-talon
+taalonn
+123456
