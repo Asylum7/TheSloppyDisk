@@ -1,3 +1,14 @@
+APPLE
+123 APPLE RD
+APPLEVILLE
+AP
+78945
+very interested
+nice to have
+0
+Apple
+123456
+
 BALLAS
 211 SKYLARK DR
 LAKE FOREST
@@ -11,7 +22,7 @@ packerfan626
 
 CIA
 987 JEFFERSON BLVD
-Baltimore
+BALTIMORE
 MD
 754
 very interested
@@ -53,6 +64,17 @@ nice to have
 MiMyself
 tinkerbell1
 
+MORRIS INC.
+123 VISTA ST
+ROCKSBURGE
+CA
+94568
+somewhat interested
+nice to have
+0
+bananas
+123456
+
 SADDLEBACK COLLEGE
 28000 MARGUERITE PKWY
 MISSION VIEJO
@@ -84,4 +106,15 @@ somewhat interested
  
 0
 taalonn
+123456
+
+ZEBRA CO.
+999666 BONKERS LN
+EARTH
+TX
+98458
+not interested
+nice to have
+0
+zebra co
 123456

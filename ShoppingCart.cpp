@@ -69,9 +69,6 @@ void ShoppingCart(vector<Earth> &eBots,
 		{
 			switch(response)
 			{
-
-
-
 				// User inputs yes to edit
 				case 1:
 				// INPUT - user selects a Bot to edit, or to view the cart
@@ -406,11 +403,12 @@ void ShoppingCart(vector<Earth> &eBots,
 					if(numBots <= 0)
 					{
 						cout << "\nNo Robots in Cart\n";
+						cout << endl << endl;
+						system("pause");
 					}
-
+						ShoppingCartHeader();
 						cout <<  SHOP_CART_MENU;
 						response = GetValidInt(3,0);
-						system("CLS");
 				}// END - chose which robot to edit
 				break;
 				case 2:
@@ -444,6 +442,8 @@ void ShoppingCart(vector<Earth> &eBots,
 		if(!check && numBots == 0)
 		{
 			cout << "\nCart is empty\n\n";
+			cout << endl << endl;
+			system("pause");
 		}
 		check = true;
 		found = false;
@@ -457,9 +457,11 @@ void ShoppingCart(vector<Earth> &eBots,
 
 	}// END - if(numBots > 0)
 
-	if(numBots == 0 && check)
+	else if(numBots == 0 && check)
 	{
 		cout << "\nCart is empty\n";
+		cout << endl << endl;
+		system("pause");
 	}
 
 }

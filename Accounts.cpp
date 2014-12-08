@@ -209,7 +209,9 @@ void Accounts::SignUp()
 				it++;
 				index++;
 			}
+
 			it = accounts.begin();
+
 			totalAccounts++;
 			validUsername = true;
 
@@ -378,6 +380,8 @@ void Accounts::Print()
 		cout << "Username: " << accounts[i].username << endl;
 		if(i <= accounts.size())cout << endl;
 	}
+	cout << endl << endl;
+	system("pause");
 }//END - Print
 
 //returns true if a username in the list matches the passed in username

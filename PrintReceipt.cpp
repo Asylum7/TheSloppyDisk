@@ -12,8 +12,8 @@ void PrintReceipt(vector<Earth> &eBots,
 		 	 	  double shipping,
 		 	 	  string lastFour)
 {
-	system("CLS");
-	double totalPrice;
+	ShoppingCartHeader();
+	double totalPrice = 0;
 	int totalE = 0;
 	int totalA = 0;
 	int totalS = 0;
@@ -65,6 +65,8 @@ void PrintReceipt(vector<Earth> &eBots,
 		cout << "Shipping             : $"  << shipping << endl;
 		cout <<"**************************\n";
 		cout << "Order Total: $" << totalPrice << endl;
+
+		cout << endl << endl;
 		system("PAUSE");
 
 }
