@@ -10,7 +10,6 @@ void Accounts::SearchUserName()
 	cout << "Enter the user name you would like to search for: ";
 	getline(cin, searchItem);
 
-	StringToupper(searchItem);
 
 	sameUserName = CheckUsername(searchItem);
 
@@ -39,9 +38,9 @@ void Accounts::SearchCompanyName()
 
 	StringToupper(searchItem);
 
-	while (i < accounts.size() && !companyName && accounts[i].adminStatus != 1)
+	while (i < accounts.size() && !companyName)
 	{
-		if(accounts[i].name == searchItem)
+		if(accounts[i].name == searchItem && (accounts[i].adminStatus != 1))
 		{
 			companyName = true;
 		}
