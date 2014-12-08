@@ -2,7 +2,7 @@
 
 void Accounts::AdminPrint()
 {
-	system("CLS");
+//CLEAR HERE
 	cout <<  "1--Search by Name\n"
 			 "2--Search by Company Name\n"
 			 "3--Search by City\n"
@@ -54,13 +54,14 @@ void Accounts::AdminSelection()
 
 void Accounts::AccountOptionsMenu()
 {
-	system("CLS");
+//CLEAR HERE
 	cout << "1--Create a User\n"
 			"2--Edit a User\n"
 			"3--Delete a User\n"
 			"4--Print Customer List\n"
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
+//CLEAR HERE
 }
 
 void Accounts::AccountOptionsSelection()
@@ -244,11 +245,12 @@ void Accounts::CreateUser()
 
 void Accounts::EditUserMenu()
 {
-	system("CLS");
+
 	cout << "\n1--Edit Our Interest\n"
 			"2--Edit Admin Status\n"
 			"0--Return to Previous Menu\n\n"
 			"Selection: ";
+//CLEAR HERE
 
 }
 
