@@ -16,6 +16,8 @@ void Accounts::SearchUserName()
 	if (sameUserName == true)
 	{
 		cout << "Found user: " << searchItem;
+		cout << "\nTo edit user..go to account "
+				"options in main admin menu\n\n";
 	}
 	else
 	{
@@ -194,11 +196,12 @@ void Accounts::SearchZip()
 
 void Accounts::SearchTheirInterest()
 {
-	AdminMenuHeader();
 	string searchItem;
 	int response = 1;
+	int count = 0;
 	while (response != 0)
 	{
+		AdminMenuHeader();
 		cout << "Search for users with interest:\n"
 				"1--Very Interested\n"
 				"2--Somewhat Interested\n"
@@ -230,8 +233,12 @@ void Accounts::SearchTheirInterest()
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
 				}
 			}
+			cout << "\nNumber of users with interest '" << searchItem << "'"
+					<< count << endl << endl;
+			system("pause");
 		}
 		else if (response == 2)
 		{
@@ -241,8 +248,12 @@ void Accounts::SearchTheirInterest()
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
 				}
 			}
+			cout << "\nNumber of users with interest '" << searchItem << "'"
+					<< count << endl << endl;
+			system("pause");
 		}
 		else if (response == 3)
 		{
@@ -252,21 +263,25 @@ void Accounts::SearchTheirInterest()
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
 				}
 			}
+			cout << "\nNumber of users with interest '" << searchItem << "'"
+					<< count << endl << endl;
+			system("pause");
 		}
 	}
 	cout << endl << endl;
-	system("pause");
 }
 
 void Accounts::SearchOurInterest()
 {
-	AdminMenuHeader();
 	string searchItem;
 	int response = 1;
+	int count = 0;
 	while (response != 0)
 	{
+		AdminMenuHeader();
 		cout << "Search for users with interest level:\n"
 				"1--Key\n"
 				"2--Nice to Have\n"
@@ -295,8 +310,12 @@ void Accounts::SearchOurInterest()
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
 				}
 			}
+			cout << "\nNumber of users with interest '" << searchItem << "'"
+					<< count << endl << endl;
+			system("pause");
 		}
 		else if (response == 2)
 		{
@@ -306,10 +325,13 @@ void Accounts::SearchOurInterest()
 				{
 					cout << "Username: " << accounts[index].username << endl;
 					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
 				}
 			}
+			cout << "\nNumber of users with interest '" << searchItem << "'"
+					<< count << endl << endl;
+			system("pause");
 		}
 	}
 	cout << endl << endl;
-	system("pause");
 }

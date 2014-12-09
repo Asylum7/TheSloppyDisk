@@ -24,11 +24,12 @@ public:
 	bool   GetBrocSent();
 
 	void Print();
+	string email;
 
 private:
 	string name;
 	string company;
-	string email;
+
 	int    zip;
 	bool   brochureSent;
 };

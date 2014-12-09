@@ -123,13 +123,13 @@ void Accounts::CreateUser()
 			if(CheckUsername(username))throw usernameAlreadyTaken();
 
 			//error checking for minimum length for username
-			if(username.length() < 5)throw invalidUsernameLength();
+			if(username.length() < 5 || username.length() > 25)throw invalidUsernameLength();
 
 			cout << "Please enter a password: ";
 			getline(cin, password);
 
 			//error checking for minimum password size
-			if(password.length() < 5)throw invalidPasswordLength();
+			if(password.length() < 5 || password.length() > 18)throw invalidPasswordLength();
 
 			cout << "Please confirm password: ";
 			getline(cin, passwordConfirm);
@@ -157,10 +157,11 @@ void Accounts::CreateUser()
 			cout << "Please enter in the zip code: ";
 			zip = GetValidInt(99999, 0);
 
+			//input admin abilities from the user
 			cout << "Enter 0 for Regular user, Enter 1 for Admin: ";
 			admin = GetValidInt(1, 0);
 
-
+			//Allows admin to enter in interest level for the user
 			if (admin != 1)
 			{
 				cout << "Our interest level: \n";
@@ -170,6 +171,7 @@ void Accounts::CreateUser()
 
 				selection = GetValidInt(2, 1);
 
+				//Switch statement for the interest level entered
 				switch (selection)
 				{
 					case 1: ourInterest = "key";
@@ -227,17 +229,16 @@ void Accounts::CreateUser()
 
 		catch(invalidUsernameLength)
 		{
-			cout << "::ATTENTION:: Invalid username, minimum of "
-					 "five characters required, "
-					 "please try again\n";
+			cout << "::ATTENTION:: Invalid username, must be between "
+					"5 and 25 characters, "
+					 "please try again\n\n";
 		}
 
 		catch(invalidPasswordLength)
 		{
-
-			cout << "::ATTENTION:: Invalid password, minimum of "
-					 "five characters required, "
-					 "please try again\n";
+			cout << "::ATTENTION:: Invalid password, must be between "
+					"5 and 18 characters, "
+					 "please try again\n\n";
 		}
 	}while(!validUsername);
 	cout << endl << endl;

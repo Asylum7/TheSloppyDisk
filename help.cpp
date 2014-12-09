@@ -14,6 +14,6 @@ void Help()
 	WordWrap(helpText);
 	cout << helpText;
 
-	cout << "\n\nPress enter to return to the main menu...";
+	cout << endl << endl;
 	system("pause");
 }

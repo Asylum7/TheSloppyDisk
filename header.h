@@ -45,6 +45,7 @@ void AdminMenuHeader();
 void StringToupper(string &word1);
 void ContactUsHeader();
 void ContactUs();
+void WordWrap(string &text);
 
 
 
