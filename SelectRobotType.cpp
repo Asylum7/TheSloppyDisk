@@ -85,4 +85,4 @@ void SelectRobotType(int response,
 	response = GetValidInt(3,0);
 	system("CLS");
 	}
-}
+}//end - SelectRobotType

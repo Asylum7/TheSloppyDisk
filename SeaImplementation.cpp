@@ -1,15 +1,17 @@
 #include "Sea.h"
 
+//default constructor, setting date to their default values
 Sea::Sea()
 :Robot("Sea-Bot", "00000000000", 105555.99, false, false )
 {
 	sonar = false;
 	subMarine = false;
 }
-Sea::~Sea()
-{
 
-}
+//default constructor, unused
+Sea::~Sea(){}
+
+//resetting prices to default values
 void Sea::Reset(string num)
 {
 	setReset(true);
@@ -20,6 +22,8 @@ void Sea::Reset(string num)
 	subMarine = false;
 	sonar = false;
 }
+
+
 void Sea::setSonar(bool sonarSet)
 {
 	if(sonarSet)
@@ -50,6 +54,7 @@ void Sea::setSonar(bool sonarSet)
 		}
 	}
 }
+
 void Sea::setSub(bool setSub)
 {
 	if(setSub)
@@ -79,19 +84,23 @@ void Sea::setSub(bool setSub)
 		}
 	}
 }
+
 bool Sea::getSonar()
 {
 	return sonar;
 }
+
 bool Sea::getSub()
 {
 	return subMarine;
 }
+
 void Sea::Display(ostream &file)
 {
 	Robot::Display(file);
 	DisplayUpgrades(file);
 }
+
 void Sea::DisplayUpgrades(ostream &file)
 {
 	Robot::DisplayUpgrades(file);

@@ -1,6 +1,7 @@
 #include <Windows.h>
 using namespace std;
 
+//This function will resize a console window to preset dimensions
 void ResizeWindow()
 {
 	//Set mode to ensure window does not exceed buffer size

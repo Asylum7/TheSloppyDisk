@@ -22,6 +22,7 @@ E = Light Yellow
 F = Bright White
 */
 
+//outputs the shopping cart header
 void ShoppingCartHeader()
 {
 	//clearing the screen of any test before the shopping cart menu
@@ -40,6 +41,4 @@ void ShoppingCartHeader()
 			"                                _|        _|                        _|_|                                            \n";
 
 	cout << shoppingCartLogo << endl;
-
-
-}
+}//end - ShoppingCartHeader

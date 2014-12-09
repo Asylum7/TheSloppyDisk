@@ -5,23 +5,35 @@
 /******************************************************************************
  * PROTOTYPES
  ******************************************************************************/
+//displays the contents of the cart to the screen
 void DisplayCart(vector<Earth> &eBots,
 				 vector<Air> &aBots,
 				 vector<Sea> &sBots,
 				 unsigned int &numBots);
 
+//removes an earth bot upgrade
 void RemoveEarthUpgrade(vector<Earth> &eBots,
 						unsigned int &index);
+
+//adds an earth bot upgrade
 void AddEarthUpgrade(vector<Earth> &eBots,
 					 unsigned int &index);
 
+//adds an air bot upgrade
 void AddAirUpgrade(vector<Air> &aBots,
 				   unsigned int &index);
+
+//removes an air bot upgrade
 void RemoveAirUpgrades(vector<Air> &aBots,
 					  unsigned int &index);
 
+//adds a sea bot upgrade
 void AddSeaUpgrade(vector<Sea> &sBots, unsigned int &index);
+
+//removes a sea bot upgrade
 void RemoveSeaUpgrade(vector<Sea> &sBots, unsigned int &index);
+
+//totals the price and calculates the total cost for the user
 void CheckOut(vector<Earth> &eBots,
 		  	  vector<Air> &aBots,
 		  	  vector<Sea> &sBots,

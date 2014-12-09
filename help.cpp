@@ -1,19 +1,23 @@
 #include "header.h"
 
+//help menu to guide the user through using the program. Internet
+//connection required
 void Help()
 {
+	//printing help header and help color
 	HelpMenuHeader();
-	string helpText;
-	helpText = "Using the iRobotsTheBomb interactive brochure is easy! "
-			"You will be guided through your purchasing process by a series of menus. "
-			"Each menu will give you a series of numbered options. Once you've decided "
-			"which option you would like to select, simply type the corresponding number "
-			"press the enter button. When being asked for input, be sure to carefully "
-			"enter the correct information in the correct format, as specified by the "
-			"prompt.";
-	WordWrap(helpText);
-	cout << helpText;
 
-	cout << endl << endl;
+	cout << "You are being redirected to an online help tutorial!\n";
+
+	//Opening external google docs link to an interactive help menu
+	ExternalLink("https://docs.google.com/document/d/1YoCcngpTv694s-"
+			     "Jo6ML1giQqiH-_BI9D4yEXM0nytvI/edit?usp=sharing");
+
+	cout << "For other help options please contact us at:\n";
+	cout << "Phone:   1-800-ROBOTCARE\n";
+	cout << "Email:   iRobotsTheBomb.com@gmail.com\n";
+	cout << "Fax:     1-888-ROBOTFAXS\n\n";
+
+	//holding the program until the user presses any key
 	system("pause");
 }

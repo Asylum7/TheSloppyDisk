@@ -1,5 +1,7 @@
 #include "header.h"
 
+//Allows the user to choose their preferred method of shipping; returns
+//the cost of shipping to the calling funciton
 double Shipping()
 {
 	cin.ignore();
@@ -22,4 +24,4 @@ double Shipping()
 	}
 	system("CLS");
 	return shippingOption;
-}
+}//end - Shipping
