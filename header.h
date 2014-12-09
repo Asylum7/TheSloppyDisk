@@ -46,6 +46,7 @@ void StringToupper(string &word1);
 void ContactUsHeader();
 void ContactUs();
 void WordWrap(string &text);
+void ExternalLink(string webLink);//IN - the web link to open
 
 
 

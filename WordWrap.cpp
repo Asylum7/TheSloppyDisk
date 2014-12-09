@@ -1,3 +1,4 @@
+
 #include "header.h"
 
 void WordWrap(string &text)
@@ -23,5 +24,4 @@ void WordWrap(string &text)
             }
         }
     }
-
 }
