@@ -151,9 +151,9 @@ void SaveProspectList(Queue<Prospects>prospectList)
 		outFile << writeObject.GetCompany()	 << endl;
 		outFile << writeObject.GetEmail()	 << endl;
 		outFile << writeObject.GetZip() 	 << endl;
-		outFile << writeObject.GetBrocSent() << endl;
+		outFile << writeObject.GetBrocSent();
 
-		if(i != size - 1)outFile << endl;
+		if(i != size - 1)outFile << endl << endl;
 	}
 
 	outFile.close();

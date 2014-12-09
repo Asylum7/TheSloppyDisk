@@ -32,12 +32,13 @@ struct Reviews
 //PROTOTYPES
 void Print (Person *personPtr, fstream &file);
 void ModelNumberGenerator(string list[]);
-int GetValidInt(int upper, int lower);
+int  GetValidInt(int upper, int lower);
 void Inventory (ostream &file);
 void ResizeWindow();
 void MenuHeader();
 void ShoppingCartHeader();
 void HelpMenuHeader();
+void Help();
 void RobotCatalogMenu();
 void AdminMenuHeader();
 void StringToupper(string &word1);

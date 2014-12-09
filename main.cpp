@@ -22,25 +22,29 @@ int main()
 			cout << "\nPlease make a selection:\n"
 			"1--Sign Up\n"
 			"2--Log in\n"
+			"3--Help\n"
 			"0--Exit\n\n"
 			"Selection: ";
-			selection = GetValidInt(2,0);
+			selection = GetValidInt(3,0);
 			switch(selection)
 			{
-				case 1: test.SignUp();
-				break;
-				case 2: cout << endl;
-				test.LogIn(adminStatus);
+			case 1: test.SignUp();
+					break;
+			case 2: cout << endl;
+					test.LogIn(adminStatus);
 
-				if (adminStatus == true)
-				{
-					AdminMenuHeader();
-					test.AdminSelection();
-				}
-				else
-				{
-					MainMenu();
-				}
+					if (adminStatus == true)
+					{
+						AdminMenuHeader();
+						test.AdminSelection();
+					}
+					else
+					{
+						MainMenu();
+					}
+					break;
+			case 3: Help();
+					break;
 			}
 			test.CloseAccounts();
 		}
