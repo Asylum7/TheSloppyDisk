@@ -9,6 +9,7 @@
 #include <cstdlib>
 #include <Windows.h>
 #include "Accounts.h"
+#include "Prospects.h"
 using namespace std;
 
 struct Person
@@ -42,6 +43,8 @@ void Help();
 void RobotCatalogMenu();
 void AdminMenuHeader();
 void StringToupper(string &word1);
+void ContactUsHeader();
+void ContactUs();
 
 
 

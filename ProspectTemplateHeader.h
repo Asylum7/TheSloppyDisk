@@ -3,8 +3,6 @@
 
 #include "Queue_Template.h"
 #include "Prospects.h"
-#include <ios>
-#include <limits>
 using namespace std;
 
 void InfoRequest(Queue<Prospects>prospectList);

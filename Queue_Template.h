@@ -21,6 +21,7 @@ public:
 	int    Size(){return size;};
 	bool   IsEmpty(){return head == NULL;};
 	void   ClearQueue();
+	bool   CheckExistingEmail(string compareEmail);
 
 	struct node
 	{
@@ -176,6 +177,27 @@ void Queue<object>::ClearQueue()
 	{
 		Dequeue();
 	}
+}
+
+template <class object>
+bool Queue<object>::CheckExistingEmail(string compareEmail)
+{
+	bool found = false;
+	node *srcPtr;
+	srcPtr = head;
+	while(srcPtr != NULL && !found)
+	{
+		if(srcPtr->data.email == compareEmail)
+		{
+			found = true;
+		}
+		else
+		{
+			srcPtr = srcPtr->next;
+		}
+	}
+	srcPtr = NULL;
+	return found;
 }
 
 #endif /* QUEUE_TEMPLATE_H_ */

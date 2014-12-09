@@ -13,6 +13,7 @@ void InfoRequest(Queue<Prospects>prospectList)
 	class invalidNameLength{};
 	class invalidCompanyLength{};
 	class invalidEmail{};
+	class existingEmail{};
 	class invalidZip{};
 	class notIntInput{};
 
@@ -37,6 +38,8 @@ void InfoRequest(Queue<Prospects>prospectList)
 			getline(cin, email);
 			if(email.length() < 8 || email.length() > 30)
 				throw invalidEmail();
+			if(prospectList.CheckExistingEmail(email))
+				throw existingEmail();
 
 			//input zip from user
 			cout << "Please enter in your zip code: ";
@@ -47,7 +50,7 @@ void InfoRequest(Queue<Prospects>prospectList)
 			if(nZip < 0 || nZip > 99999)
 				throw invalidZip();
 
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.ignore(1000, '\n');
 
 			validProspect = true;
 
@@ -71,13 +74,18 @@ void InfoRequest(Queue<Prospects>prospectList)
 					"8-30 characters.\n";
 		}
 
+		catch(existingEmail)
+		{
+			cout << "::ATTENTION:: A request from that email already exists.\n";
+		}
+
 		catch(notIntInput)
 		{
 			cout << "::ATTENTION:: Invalid zip, please enter "
 					"a NUMBER from 1-99999.\n";
 
 			cin.clear();
-			cin.ignore(numeric_limits<streamsize>::max(), '\n');
+			cin.ignore(1000, '\n');
 		}
 
 		catch(invalidZip)
@@ -114,13 +122,13 @@ void BuildList(Queue<Prospects>prospectList)
 		getline(inFile, company);
 		getline(inFile, email);
 		inFile >> zip;
-		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+		inFile.ignore(1000, '\n');
 
 		Prospects newProspect(name, company, email, zip);
 
 		prospectList.Enqueue(newProspect);
 
-		inFile.ignore(numeric_limits<streamsize>::max(), '\n');
+		inFile.ignore(1000, '\n');
 
 	}//END - while(inFile)
 

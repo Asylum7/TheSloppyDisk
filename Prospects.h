@@ -1,12 +1,11 @@
 #ifndef PROSPECTS_H_
 #define PROSPECTS_H_
 
-#include<string>
-#include<iostream>
-#include<fstream>
+#include "header.h"
 using namespace std;
 
-class Prospects {
+class Prospects
+{
 public:
 	//default constructor, overloaded to accept values(has set defaults)
 	Prospects(string nName = " ", string nCompany = " ",
@@ -18,7 +17,6 @@ public:
 	void  SendBrochure();
 
 //ACCESSORS////////////////////////////////////////////////////////////////////
-
 	string GetName();
 	string GetCompany();
 	string GetEmail();
