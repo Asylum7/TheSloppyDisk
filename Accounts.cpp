@@ -1,6 +1,7 @@
 #include "header.h"
 
-//creating an account will generate a queue of account names and passwords
+//Creating an account will generate a queue of account names and passwords
+//	from the specified input file.
 Accounts::Accounts()
 {
 	string name;
@@ -10,7 +11,7 @@ Accounts::Accounts()
 	int    zip = 0;
 	string theirInterest = " ";
 	string ourInterest = " ";
-	bool   adminStatus;
+	bool   adminStatus; //whether the user is an admin or not.
 	string username;
 	string password;
 	totalAccounts = 0;
@@ -18,7 +19,7 @@ Accounts::Accounts()
 	ifstream inFile;
 	inFile.open("accountInformation.txt");
 
-	//has created a queue of account names and passwords
+	//Will create a vector of account names and passwords
 	while(inFile)
 	{
 		//incrementing the total number of accounts
@@ -60,6 +61,7 @@ Accounts::Accounts()
 		nextAccount.username      = username;
 		nextAccount.password      = password;
 
+		//Adds nextAccount to the vector.
 		accounts.push_back(nextAccount);
 		inFile.ignore(10000, '\n');
 	}//END - while(inFile)
@@ -194,6 +196,7 @@ void Accounts::SignUp()
 
 			it = accounts.begin();
 
+			//Loops until the correct placement is found, or the end of the vector.
 			while(index < totalAccounts && notFound)
 			{
 				if(nextAccount.name < accounts[index].name)
@@ -389,11 +392,12 @@ bool Accounts::CheckUsername(string username)
 	bool sameUsername = false;
 	unsigned int i = 0;
 
+	//Runs through the vector to check if the username exists.
 	while(i < accounts.size() && !sameUsername)
 	{
 		if(accounts[i].username == username)
 		{
-			sameUsername = true;
+			sameUsername = true; //changes sameUsername if it finds another instance.
 		}
 		else
 		{
@@ -406,7 +410,7 @@ bool Accounts::CheckUsername(string username)
 
 bool Accounts::CheckAdmin(bool adminStatus, int admin)
 {
-	//Checks Admin
+	//Checks and changes adminStatus based on admin.
 	if (admin == 1)
 	{
 		adminStatus = true;

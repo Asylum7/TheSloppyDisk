@@ -195,6 +195,7 @@ void Accounts::SearchZip()
 	system("pause");
 }
 
+//Searches for users based on their interest.
 void Accounts::SearchTheirInterest()
 {
 	string searchItem;
@@ -275,6 +276,7 @@ void Accounts::SearchTheirInterest()
 	cout << endl << endl;
 }
 
+//Searches for users based on our interest in their business.
 void Accounts::SearchOurInterest()
 {
 	string searchItem;
@@ -292,7 +294,7 @@ void Accounts::SearchOurInterest()
 		response = GetValidInt(2, 0);
 
 		cout << endl;
-		switch (response)
+		switch (response)//changes what the searchItem is.
 		{
 			case 1: searchItem = "key";
 				break;

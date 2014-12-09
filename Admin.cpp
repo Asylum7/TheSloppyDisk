@@ -1,5 +1,6 @@
 #include "header.h"
 
+//Prints the main page and menu for an admin user.
 void Accounts::AdminPrint()
 {
 	AdminMenuHeader();
@@ -15,6 +16,7 @@ void Accounts::AdminPrint()
 			 "Selection: ";
 }
 
+//Takes in admin choice for menu and does the operation.
 void Accounts::AdminSelection()
 {
 	int selection;

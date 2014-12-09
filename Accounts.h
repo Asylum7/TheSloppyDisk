@@ -49,26 +49,43 @@ public:
 	void Print();
 	//returns true if the passed in string matches username in list
 	bool CheckUsername(string username);
-	//returns type if the username is an admin
+	//returns true if the username is an admin
 	bool CheckAdmin(bool adminStatus, int admin);
 
 	//ADMIN FUNCTIONS
+	//Prints the main page and menu for an admin user.
 	void AdminPrint();
+	//Takes in admin choice for menu and does the operation.
 	void AdminSelection();
+	//Searches for a username.
 	void SearchUserName();
+	//Searches for a company name.
 	void SearchCompanyName();
+	//Searches for a city.
 	void SearchCity();
+	//Searches for a state.
 	void SearchState();
+	//Searches for a Zip code.
 	void SearchZip();
+	//Searches for users based on their interest.
 	void SearchTheirInterest();
+	//Searches for users based on our interest in their business.
 	void SearchOurInterest();
+	//Prints a page and menu for modifying the list of accounts.
 	void AccountOptionsMenu();
+	//Takes in admin choice and initiates the desired operation.
 	void AccountOptionsSelection();
+	//Allows the admin to create a new user.
 	void CreateUser();
+	//Menu to change existing users.
 	void EditUserMenu();
+	//Takes in admin choice for editting a user and initiates the operation.
 	void EditUser();
+	//Allows admin to change ourInterest for a desired user.
 	void EditInterest();
+	//Allows the admin to change a regular user into an another admin.
 	void EditAdminStatus();
+	//Allows admin to delete a user.
 	void DeleteUser();
 
 
