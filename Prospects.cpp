@@ -33,12 +33,12 @@ bool   Prospects::GetBrocSent()
 
 void Prospects::Print()
 {
-
-		cout << name 	 << endl;
-		cout << company  << endl;
-		cout << email 	 << endl;
-		cout << zip 	 << endl;
-		cout << (brochureSent ? "Brochure Sent" : "Brochure Not Sent")
-			 << endl;
+	cout << "Printing Prospect:\n";
+	cout << name 	 << endl;
+	cout << company  << endl;
+	cout << email 	 << endl;
+	cout << zip 	 << endl;
+	cout << (brochureSent ? "Brochure Sent" : "Brochure Not Sent")
+		 << endl;
 
 }//END - Print

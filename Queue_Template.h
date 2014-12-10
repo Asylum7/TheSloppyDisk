@@ -187,7 +187,7 @@ bool Queue<object>::CheckExistingEmail(string compareEmail)
 	srcPtr = head;
 	while(srcPtr != NULL && !found)
 	{
-		if(srcPtr->data.email == compareEmail)
+		if(srcPtr->data.GetEmail() == compareEmail)
 		{
 			found = true;
 		}

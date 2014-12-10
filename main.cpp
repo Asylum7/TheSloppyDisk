@@ -4,10 +4,27 @@
 #include "Sea.h"
 #include "Accounts.h"
 #include "header.h"
+#include "Prospects.h"
 
 void MainMenu();
 int main()
 {
+//	Prospects example;
+//
+//	Queue<Prospects>prospectList;
+//
+//	BuildList(prospectList);
+//	(prospectList.IsEmpty() ? cout << "The list is empty." : cout << "The list is NOT empty!" );
+//
+//	InfoRequest(prospectList);
+//	(prospectList.IsEmpty() ? cout << "The list is empty." : cout << "The list is NOT empty!" );
+//
+//	example = prospectList.Front();
+//	example.Print();
+//
+//	SaveProspectList(prospectList);
+
+
 	ResizeWindow();
 	bool adminStatus = false;
 	Accounts test;
@@ -49,7 +66,7 @@ int main()
 			test.CloseAccounts();
 		}
 
-}
+	}
 
 	return 0;
 }

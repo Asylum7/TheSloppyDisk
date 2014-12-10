@@ -2,6 +2,7 @@
 #define PROSPECTS_H_
 
 #include "header.h"
+#include "Queue_Template.h"
 using namespace std;
 
 class Prospects
@@ -24,14 +25,17 @@ public:
 	bool   GetBrocSent();
 
 	void Print();
-	string email;
 
 private:
 	string name;
 	string company;
-
+	string email;
 	int    zip;
 	bool   brochureSent;
 };
+
+void InfoRequest(Queue<Prospects>prospectList);
+void BuildList(Queue<Prospects>prospectList);
+void SaveProspectList(Queue<Prospects>prospectList);
 
 #endif /* PROSPECTS_H_ */

@@ -7,6 +7,11 @@ void InfoRequest(Queue<Prospects>prospectList)
 	string email;
 	int    nZip;
 
+	bool nameInvalid=true;
+	bool compInvalid=true;
+	bool emailInvalid=true;
+	bool zipInvalid=true;
+
 	bool validProspect = false;
 
 	//catch classes
@@ -19,81 +24,99 @@ void InfoRequest(Queue<Prospects>prospectList)
 
 	do
 	{
-		try
+		do
 		{
+			try
+			{
 			cout << "Please enter your name: ";
 			getline(cin, nName);
 			//error checking for valid name length.
-			if(nName.length() < 4 || nName.length() > 25)
+			nameInvalid = (nName.length() < 4 || nName.length() > 25);
+			if(nameInvalid)
 				throw invalidNameLength();
+			}
+			catch(invalidNameLength)
+			{
+				cout << "::ATTENTION:: Name must be 4-25 characters, "
+						"please try again\n";
+			}
 
-			//input company name from user
-			cout << "Please enter in your company name: ";
-			getline(cin, companyName);
+		} while (nameInvalid);
 
-			if(companyName.length() < 4 || companyName.length() > 20)
-				throw invalidCompanyLength();
+		do
+		{
+			try
+			{
+				//input company name from user
+				cout << "Please enter in your company name: ";
+				getline(cin, companyName);
+				compInvalid = (companyName.length() < 4 || companyName.length() > 20);
+				if(compInvalid)
+					throw invalidCompanyLength();
+				compInvalid = false;
+			}
+			catch(invalidCompanyLength)
+			{
+				cout << "::ATTENTION:: Company Name must be 4-20 characters, "
+						 "please try again\n";
+			}
+		} while (compInvalid);
 
-			cout << "Please enter your email: ";
-			getline(cin, email);
-			if(email.length() < 8 || email.length() > 30)
-				throw invalidEmail();
-			if(prospectList.CheckExistingEmail(email))
-				throw existingEmail();
+		do {
+			try
+			{
+				cout << "Please enter your email: ";
+				getline(cin, email);
+				if(email.length() < 8 || email.length() > 30)
+					throw invalidEmail();
+				if(prospectList.CheckExistingEmail(email))
+					throw existingEmail();
+				emailInvalid = false;
+			}
+			catch(invalidEmail)
+			{
+				cout << "::ATTENTION:: Please enter a valid Email, must be "
+						"8-30 characters.\n";
+			}
+			catch(existingEmail)
+			{
+				cout << "::ATTENTION:: A request from that email already exists.\n";
+			}
+		} while (emailInvalid);
 
-			//input zip from user
-			cout << "Please enter in your zip code: ";
-			cin >> nZip;
-			if(!(cin >> nZip))
-				throw notIntInput();
-
-			if(nZip < 0 || nZip > 99999)
-				throw invalidZip();
-
+		do {
+//			try
+//			{
+				//input zip from user
+				cout << "Please enter in your zip code: ";
+				GetValidInt(99999, 1);
+//				cin >> nZip;
+//				if(!(cin >> nZip))
+//					throw notIntInput();
+//				if(nZip < 1 || nZip > 99999)
+//					throw invalidZip();
+				zipInvalid = false;
+//			}
+//			catch(notIntInput)
+//			{
+//				cout << "::ATTENTION:: Invalid zip, please enter "
+//						"a NUMBER from 1-99999.\n";
+//cerr << endl << "WTF MAN: " << nZip << endl;
+//				cin.clear();
+//cerr << endl << "WTF MAN: " << nZip << endl;
+//			}
+//			catch(invalidZip)
+//			{
+//
+//				cout << "::ATTENTION:: Invalid zip, please enter "
+//						"a number from 1-99999.\n";
+//			}
 			cin.ignore(1000, '\n');
+cerr << endl << "WTF MAN: " << nZip << endl;
+		} while (zipInvalid);
 
-			validProspect = true;
+		validProspect = true;
 
-		}//END - try
-
-		catch(invalidNameLength)
-		{
-			cout << "::ATTENTION:: Name must be 4-25 characters, "
-					 "please try again\n";
-		}
-
-		catch(invalidCompanyLength)
-		{
-			cout << "::ATTENTION:: Company Name must be 4-20 characters, "
-					 "please try again\n";
-		}
-
-		catch(invalidEmail)
-		{
-			cout << "::ATTENTION:: Please enter a valid Email, must be "
-					"8-30 characters.\n";
-		}
-
-		catch(existingEmail)
-		{
-			cout << "::ATTENTION:: A request from that email already exists.\n";
-		}
-
-		catch(notIntInput)
-		{
-			cout << "::ATTENTION:: Invalid zip, please enter "
-					"a NUMBER from 1-99999.\n";
-
-			cin.clear();
-			cin.ignore(1000, '\n');
-		}
-
-		catch(invalidZip)
-		{
-
-			cout << "::ATTENTION:: Invalid zip, please enter "
-					"a number from 1-99999.\n";
-		}
 	}while(!validProspect);
 
 	//creating new Prospects object with the provided information.
@@ -144,7 +167,6 @@ void SaveProspectList(Queue<Prospects>prospectList)
 	int size;
 
 	size = prospectList.Size();
-
 
 	//removing the old file
 	remove("prospects.txt");
