@@ -112,13 +112,15 @@ void Accounts::AccountOptionsSelection()
 			break;
 		default: cout << "***INVALID INPUT****";
 		}
+
+		cout << endl << endl;
+		//Prints the menu for the admin
+		AccountOptionsMenu();
+
+		accountSelection = GetValidInt(4, 0);
 	}
 
-	cout << endl << endl;
-	//Prints the menu for the admin
-	AccountOptionsMenu();
 
-	accountSelection = GetValidInt(4, 0);
 }
 
 /******************************************************************************
@@ -629,7 +631,4 @@ void Accounts::DeleteUser()
 		cout << "ERASED: " << accounts[selection].username;
 		accounts.erase(accounts.begin() + selection);
 	}
-
-	cout << endl << endl;
-	system("pause");
 }
