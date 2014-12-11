@@ -76,7 +76,7 @@ void MainMenu()
 		switch(response)
 		{
 		case 1:
-		ExternalLink("https://docs.google.com/document/d/1NBhCniSvtfygnMvZYHYM_0HwyD_BE2e_uopF3m0SMRM/edit?usp=sharing");
+			ExternalLink("https://docs.google.com/document/d/1NBhCniSvtfygnMvZYHYM_0HwyD_BE2e_uopF3m0SMRM/edit?usp=sharing");
 		break;
 
 		// INPUT & OUTPUT - User will input which type of robot to buy

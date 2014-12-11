@@ -1,17 +1,21 @@
 #include "header.h"
 
-//Allows admin to Search for a user name
+/******************************************************************************
+ * FUNCTION - SearchUserName
+ * ___________________________________________________________________________
+ * Allows admin to search for a username..nothing else
+ ******************************************************************************/
 void Accounts::SearchUserName()
 {
 	AdminMenuHeader();
 	bool sameUserName = false;
 	string searchItem;
 
+	//INPUT--From admin, the username they wanna search for
 	cout << "Enter the user name you would like to search for: ";
 	getline(cin, searchItem);
 
-	StringToupper(searchItem);
-
+	//Calls checkusername function to search for username
 	sameUserName = CheckUsername(searchItem);
 
 	if (sameUserName == true)
@@ -27,8 +31,11 @@ void Accounts::SearchUserName()
 	cout << endl << endl;
 	system("pause");
 }
-
-//Allows admin to Search for a company name
+/******************************************************************************
+ * FUNCTION - Search company name
+ * ___________________________________________________________________________
+ * Allows admin to search for a company name
+ ******************************************************************************/
 void Accounts::SearchCompanyName()
 {
 	AdminMenuHeader();
@@ -36,14 +43,16 @@ void Accounts::SearchCompanyName()
 	bool companyName = false;
 	unsigned int i = 0;
 
+	//INPUT--From admin, the company name they would like to search for
 	cout << "Enter the name of the company you would like to search for: ";
 	getline(cin, searchItem);
 
 	StringToupper(searchItem);
 
-	while (i < accounts.size() && !companyName && accounts[i].adminStatus != 1)
+	//OUTPUTS--All companies found and that are not admins.
+	while (i < accounts.size() && !companyName)
 	{
-		if(accounts[i].name == searchItem)
+		if(accounts[i].name == searchItem && accounts[i].adminStatus != 1)
 		{
 			companyName = true;
 		}
@@ -70,8 +79,11 @@ void Accounts::SearchCompanyName()
 	cout << endl << endl;;
 	system("pause");
 }
-
-//Allows admins to search by city
+/******************************************************************************
+ * FUNCTION - SearchCity
+ * ___________________________________________________________________________
+ * Allows admin to search for users in a specific city
+ ******************************************************************************/
 void Accounts::SearchCity()
 {
 	AdminMenuHeader();
@@ -79,11 +91,13 @@ void Accounts::SearchCity()
 	bool found = false;
 	unsigned int i = 0;
 
+	//Admin enters in the city they would like to search for
 	cout << "Enter the city of the company you would like to search for: ";
 	getline(cin, searchItem);
 
 	StringToupper(searchItem);
 
+	//OUTPUTS--All companies found in this city.
 	cout << "Companies located in the city " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
@@ -113,7 +127,11 @@ void Accounts::SearchCity()
 	system("pause");
 }
 
-//Allows admints to search by state
+/******************************************************************************
+ * FUNCTION - SearchState
+ * ___________________________________________________________________________
+ * Allows admin to search for users in a specific state
+ ******************************************************************************/
 void Accounts::SearchState()
 {
 	AdminMenuHeader();
@@ -121,11 +139,13 @@ void Accounts::SearchState()
 	bool found = false;
 	unsigned int i = 0;
 
+	//Allows admin to search by state
 	cout << "Enter the state of the company you would like to search for: ";
 	getline(cin, searchItem);
 
 	StringToupper(searchItem);
 
+	//OUTPUTS--All companes found in a specific state that are NOT admins
 	cout << "Companies located in the state " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
@@ -155,7 +175,11 @@ void Accounts::SearchState()
 	system("pause");
 }
 
-//Allows admints to search by zip
+/******************************************************************************
+ * FUNCTION - SearchZip
+ * ___________________________________________________________________________
+ * Allows admin to search for users in a specific zip code area
+ ******************************************************************************/
 void Accounts::SearchZip()
 {
 	AdminMenuHeader();
@@ -163,9 +187,12 @@ void Accounts::SearchZip()
 	bool found = false;
 	unsigned int i = 0;
 
+	//Allows admin to search for a specific zip
 	cout << "Enter the zip of the company you would like to search for: ";
 	searchItem = GetValidInt(99999, 00000);
 
+	//OUTPUTS--All companies located in the specific zip code, that are not
+	// admins
 	cout << "Companies located in the zip code " << searchItem << ":\n";
 	while (i < accounts.size())
 	{
@@ -195,24 +222,28 @@ void Accounts::SearchZip()
 	system("pause");
 }
 
-//Searches for users based on their interest.
+/******************************************************************************
+ * FUNCTION - SearchTheirInterest
+ * ___________________________________________________________________________
+ * Allows admin to search for users by user interest
+ ******************************************************************************/
 void Accounts::SearchTheirInterest()
 {
 	string searchItem;
-	int response = 1;
+	int response;
 	int count = 0;
+	AdminMenuHeader();
+	cout << "Search for users with interest:\n"
+			"1--Very Interested\n"
+			"2--Somewhat Interested\n"
+			"3--Not Interested\n"
+			"0--Return to Previous Menu\n\n"
+			"Selection: ";
+
+	response = GetValidInt(3, 0);
+
 	while (response != 0)
 	{
-		AdminMenuHeader();
-		cout << "Search for users with interest:\n"
-				"1--Very Interested\n"
-				"2--Somewhat Interested\n"
-				"3--Not Interested\n"
-				"0--Return to Previous Menu\n\n"
-				"Selection: ";
-
-		response = GetValidInt(3, 0);
-
 		switch (response)
 		{
 			case 1: searchItem = "very interested";
@@ -238,7 +269,7 @@ void Accounts::SearchTheirInterest()
 					count++;
 				}
 			}
-			cout << "\nNumber of users with interest '" << searchItem << "'"
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
 					<< count << endl << endl;
 			system("pause");
 		}
@@ -253,7 +284,7 @@ void Accounts::SearchTheirInterest()
 					count++;
 				}
 			}
-			cout << "\nNumber of users with interest '" << searchItem << "'"
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
 					<< count << endl << endl;
 			system("pause");
 		}
@@ -268,32 +299,47 @@ void Accounts::SearchTheirInterest()
 					count++;
 				}
 			}
-			cout << "\nNumber of users with interest '" << searchItem << "'"
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
 					<< count << endl << endl;
 			system("pause");
 		}
+
+		count = 0;
+		AdminMenuHeader();
+		cout << "Search for users with interest:\n"
+				"1--Very Interested\n"
+				"2--Somewhat Interested\n"
+				"3--Not Interested\n"
+				"0--Return to Previous Menu\n\n"
+				"Selection: ";
+
+		response = GetValidInt(3, 0);
 	}
-	cout << endl << endl;
 }
 
-//Searches for users based on our interest in their business.
+/******************************************************************************
+ * FUNCTION - SearchOurInterest
+ * ___________________________________________________________________________
+ * Allows admin to search for users by our interest
+ ******************************************************************************/
 void Accounts::SearchOurInterest()
 {
 	string searchItem;
 	int response = 1;
 	int count = 0;
+	AdminMenuHeader();
+	cout << "Search for users with interest level:\n"
+			"1--Key\n"
+			"2--Nice to Have\n"
+			"0--Return to Previous Menu\n\n"
+			"Selection: ";
+
+	response = GetValidInt(2, 0);
+
+	cout << endl;
 	while (response != 0)
 	{
-		AdminMenuHeader();
-		cout << "Search for users with interest level:\n"
-				"1--Key\n"
-				"2--Nice to Have\n"
-				"0--Return to Previous Menu\n\n"
-				"Selection: ";
 
-		response = GetValidInt(2, 0);
-
-		cout << endl;
 		switch (response)//changes what the searchItem is.
 		{
 			case 1: searchItem = "key";
@@ -316,7 +362,7 @@ void Accounts::SearchOurInterest()
 					count++;
 				}
 			}
-			cout << "\nNumber of users with interest '" << searchItem << "'"
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
 					<< count << endl << endl;
 			system("pause");
 		}
@@ -331,10 +377,20 @@ void Accounts::SearchOurInterest()
 					count++;
 				}
 			}
-			cout << "\nNumber of users with interest '" << searchItem << "'"
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
 					<< count << endl << endl;
 			system("pause");
 		}
+
+		count = 0;
+		AdminMenuHeader();
+		cout << "Search for users with interest level:\n"
+				"1--Key\n"
+				"2--Nice to Have\n"
+				"0--Return to Previous Menu\n\n"
+				"Selection: ";
+
+		response = GetValidInt(2, 0);
 	}
-	cout << endl << endl;
+		cout << endl;
 }

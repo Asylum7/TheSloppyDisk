@@ -1,6 +1,10 @@
 #include "header.h"
 
-//Prints the main page and menu for an admin user.
+/******************************************************************************
+ * FUNCTION - AdminPrint
+ * ___________________________________________________________________________
+ * Prints main menu for admin
+ ******************************************************************************/
 void Accounts::AdminPrint()
 {
 	AdminMenuHeader();
@@ -16,7 +20,11 @@ void Accounts::AdminPrint()
 			 "Selection: ";
 }
 
-//Takes in admin choice for menu and does the operation.
+/******************************************************************************
+ * FUNCTION - AdminSelection
+ * ___________________________________________________________________________
+ * Takes in the admin selection for the main menu
+ ******************************************************************************/
 void Accounts::AdminSelection()
 {
 	int selection;
@@ -53,7 +61,11 @@ void Accounts::AdminSelection()
 		}
 	}
 }
-
+/******************************************************************************
+ * FUNCTION - AccountOptionsMenu
+ * ___________________________________________________________________________
+ * Prints account options main menu for admin
+ ******************************************************************************/
 void Accounts::AccountOptionsMenu()
 {
 	AdminMenuHeader();
@@ -64,7 +76,11 @@ void Accounts::AccountOptionsMenu()
 			"0--Back to Previous Menu\n\n"
 			"Selection: ";
 }
-
+/******************************************************************************
+ * FUNCTION - AccountOptionsSelection
+ * ___________________________________________________________________________
+ * Takes in the selection from the admin for the menu
+ ******************************************************************************/
 void Accounts::AccountOptionsSelection()
 {
 	int accountSelection;
@@ -93,6 +109,12 @@ void Accounts::AccountOptionsSelection()
 		}
 	}
 }
+
+/******************************************************************************
+ * FUNCTION - CreateUser
+ * ___________________________________________________________________________
+ * Allows admin to create a user
+ ******************************************************************************/
 void Accounts::CreateUser()
 {
 	string username;
@@ -113,55 +135,165 @@ void Accounts::CreateUser()
 	class invalidUsernameLength{};
 	class passwordConfermationFail{};
 	class usernameAlreadyTaken{};
+	class invalidGeneralLength{};
+	class invalidStateLength{};
 
 	do
-	{
-		try
 		{
-			cout << "Please enter a username: ";
-			getline(cin, username);
+			try
+			{
+				cout << "Please enter a username: ";
+				getline(cin, username);
 
-			//error checking for if the username is already taken
-			if(CheckUsername(username))throw usernameAlreadyTaken();
+				//error checking for if the username is already taken
+				if(CheckUsername(username))throw usernameAlreadyTaken();
 
-			//error checking for minimum length for username
-			if(username.length() < 5 || username.length() > 25)throw invalidUsernameLength();
+				//error checking for minimum length for username
+				if(username.length() < 5 || username.length() > 25)throw invalidUsernameLength();
+				else
+				{
+					validUsername = true;
+				}
+			}
 
-			cout << "Please enter a password: ";
-			getline(cin, password);
+			catch(usernameAlreadyTaken)
+			{
+				cout << "::ATTENTION:: Username already taken, "
+						 "please try again\n";
+			}
 
-			//error checking for minimum password size
-			if(password.length() < 5 || password.length() > 18)throw invalidPasswordLength();
+			catch(invalidUsernameLength)
+			{
+				cout << "::ATTENTION:: Invalid username, must be between "
+						"5 and 25 characters, "
+						 "please try again\n\n";
+			}
 
-			cout << "Please confirm password: ";
-			getline(cin, passwordConfirm);
 
-			//error checking for account input
-			if(password != passwordConfirm)throw passwordConfermationFail();
+		}while(!validUsername);
 
-			//input company name from user
-			cout << "Please enter in the company name: ";
-			getline(cin, companyName);
+		do
+		{
+			try
+			{
+				cout << "Please enter a password: ";
+				getline(cin, password);
 
-			//input address from user
-			cout << "Please enter in the address (street address): ";
-			getline(cin, address);
+				//error checking for minimum password size
+				if(password.length() < 5 || password.length() > 18)throw invalidPasswordLength();
 
-			//input city from user
-			cout << "Please enter in the city: ";
-			getline(cin, city);
+				cout << "Please confirm password: ";
+				getline(cin, passwordConfirm);
 
-			//input state from user
-			cout << "Please enter in the state: ";
-			getline(cin, state);
+				//error checking for account input
+				if(password != passwordConfirm)throw passwordConfermationFail();
 
+			}
+			catch(passwordConfermationFail)
+			{
+				cout << "::ATTENTION:: Passwords do not match, "
+						 "please try again\n";
+			}
+
+
+			catch(invalidPasswordLength)
+			{
+				cout << "::ATTENTION:: Invalid password, must be between "
+						"5 and 18 characters, "
+						 "please try again\n\n";
+			}
+		}while(password.length() < 5 || password.length() > 18 || password != passwordConfirm);
+
+
+		do
+		{
+			try
+			{
+				//input company name from user
+				cout << "Please enter in user company name: ";
+				getline(cin, companyName);
+
+				//error checking account from user
+				if(companyName.length() > 30 || (companyName.length() == 0))throw invalidGeneralLength();
+			}
+			catch(invalidGeneralLength)
+			{
+				cout << "::ATTENTION:: Invalid input, must be greater than"
+						" 0 characters, and less "
+						"than 30 characters, please try again\n\n";
+			}
+		}while(companyName.length() > 30 || companyName.length() == 0);
+
+		do
+		{
+			try
+			{
+				//input address from user
+				cout << "Please enter in user address (street address): ";
+				getline(cin, address);
+
+				//error checking account from user
+				if(address.length() > 30 || address.length() == 0)throw invalidGeneralLength();
+			}
+			catch(invalidGeneralLength)
+			{
+				cout << "::ATTENTION:: Invalid input, must be greater than"
+								" 0 characters, and less "
+								"than 30 characters, please try again\n\n";
+			}
+		}while(address.length() > 30 || address.length() == 0);
+
+		do
+		{
+			try
+			{
+				//input city from user
+				cout << "Please enter in user city: ";
+				getline(cin, city);
+
+				//error checking account from user
+				if(city.length() > 30 || city.length() == 0)throw invalidGeneralLength();
+			}
+			catch(invalidGeneralLength)
+			{
+				cout << "::ATTENTION:: Invalid input, must be greater than"
+							" 0 characters, and less "
+							"than 30 characters, please try again\n\n";
+			}
+		}while(city.length() > 30 || city.length() == 0);
+
+		do
+		{
+			try
+			{
+				//input state from user
+				cout << "Please enter in user state: ";
+				getline(cin, state);
+
+				//error checking account from user
+				if (state.length() != 2)throw invalidStateLength();
+			}
+			catch(invalidStateLength)
+			{
+				cout << "::ATTENTION:: Invalid state input, must be 2"
+						" characters\n\n";
+			}
+		}while (state.length() != 2);
+
+		do
+		{
 			//input zip from user
-			cout << "Please enter in the zip code: ";
+			cout << "Please enter in user zip code: ";
 			zip = GetValidInt(99999, 0);
 
+		}while(zip > 99999 || zip < 0);
+
+		do
+		{
 			//input admin abilities from the user
 			cout << "Enter 0 for Regular user, Enter 1 for Admin: ";
 			admin = GetValidInt(1, 0);
+		}while(admin > 1 || admin < 0);
 
 			//Allows admin to enter in interest level for the user
 			if (admin != 1)
@@ -216,47 +348,30 @@ void Accounts::CreateUser()
 			totalAccounts++;
 			validUsername = true;
 
-		}//END - try
-		catch(passwordConfermationFail)
-		{
-			cout << "::ATTENTION:: Passwords do not match, "
-					 "please try again\n";
-		}
+			system("pause");
+		}//END
 
-		catch(usernameAlreadyTaken)
-		{
-			cout << "::ATTENTION:: Username already taken, "
-					 "please try again\n";
-		}
-
-		catch(invalidUsernameLength)
-		{
-			cout << "::ATTENTION:: Invalid username, must be between "
-					"5 and 25 characters, "
-					 "please try again\n\n";
-		}
-
-		catch(invalidPasswordLength)
-		{
-			cout << "::ATTENTION:: Invalid password, must be between "
-					"5 and 18 characters, "
-					 "please try again\n\n";
-		}
-	}while(!validUsername);
-	cout << endl << endl;
-	system("pause");
-}
-
+/******************************************************************************
+ * FUNCTION - EditUserMenu
+ * ___________________________________________________________________________
+ * Prints EditUserMenu for the admin
+ ******************************************************************************/
 void Accounts::EditUserMenu()
 {
 	AdminMenuHeader();
+	//OUTPUT--Menu
 	cout << "\n1--Edit Our Interest\n"
 			"2--Edit Admin Status\n"
 			"0--Return to Previous Menu\n\n"
 			"Selection: ";
 
 }
-
+/******************************************************************************
+ * FUNCTION - EditUser
+ * ___________________________________________________________________________
+ * Prints account options main menu for admin and takes in the
+ * selection from the edit user
+ ******************************************************************************/
 void Accounts::EditUser()
 {
 	AdminMenuHeader();
@@ -264,8 +379,10 @@ void Accounts::EditUser()
 
 	while (selection != 0)
 	{
+		//Calls menu functions
 		EditUserMenu();
 
+		//Calls get Valid Int Function
 		selection = GetValidInt(2, 0);
 
 		switch(selection)
@@ -282,7 +399,11 @@ void Accounts::EditUser()
 	cout << endl << endl;
 	system("pause");
 }
-
+/******************************************************************************
+ * FUNCTION - Edit Interest
+ * ___________________________________________________________________________
+ * Allows admin to edit the interest of the user
+ ******************************************************************************/
 void Accounts::EditInterest()
 {
 	AdminMenuHeader();
@@ -297,6 +418,7 @@ void Accounts::EditInterest()
 		cout << accounts[index].ourInterest << endl << endl;
 	}
 
+	//Takes in name from user to search
 	cout << "Enter the user name you would like to edit (Press X to exit): ";
 	getline(cin, userName);
 
@@ -315,17 +437,21 @@ void Accounts::EditInterest()
 			}
 		}
 
+		//If found
 		if (sameUserName)
 		{
 			cout << "Found user " << userName << endl;
 
 			cout << "\nWhat would you like to change our interest to?\n";
 
+			//Outputs menu to admin on which selection they would like to
+			//make
 			cout << "1--Key\n"
 					"2--Nice To Have\n"
 					"0--Return to Previous Screen\n\n"
 					"Selection: ";
 
+			//Get valid input function called
 			selection = GetValidInt(2, 0);
 
 			switch (selection)
@@ -352,7 +478,11 @@ void Accounts::EditInterest()
 	cout << endl << endl;
 	system("pause");
 }
-
+/******************************************************************************
+ * FUNCTION - EditAdminStatus
+ * ___________________________________________________________________________
+ * Allows user to edit Admin status of a user/admin
+ ******************************************************************************/
 void Accounts::EditAdminStatus()
 {
 	AdminMenuHeader();
@@ -362,6 +492,7 @@ void Accounts::EditAdminStatus()
 	bool sameUserName = false;
 	bool adminStatus = false;
 
+	//OUTPUTS--All users and their admin status
 	for (unsigned int index = 0; index < accounts.size(); index++)
 	{
 		cout << accounts[index].username << endl;
@@ -375,6 +506,7 @@ void Accounts::EditAdminStatus()
 		}
 	}
 
+	//Takes in the name the admin would like to edit
 	cout << "Enter the user name you would like to edit, press X to cancel: ";
 	getline(cin, userName);
 
@@ -446,18 +578,25 @@ void Accounts::EditAdminStatus()
 	cout << endl << endl;
 	system("pause");
 }
-
+/******************************************************************************
+ * FUNCTION - DeleteUser
+ * ___________________________________________________________________________
+ * Allows the admin to delete a user
+ ******************************************************************************/
 void Accounts::DeleteUser()
 {
 	AdminMenuHeader();
 	int selection = 0;
 	cout << endl;
+
+	//Outputs all the users and their index
 	for (unsigned int index = 1; index < accounts.size(); index++)
 	{
 		cout << index << ": Username: " << accounts[index].username << endl;
 		cout << "Company Name: " << accounts[index].name << endl << endl;
 	}
 
+	//Admin will type in the index they would like to delete
 	cout << "Which user would you like to delete? Type 0 to exit: ";
 	selection = GetValidInt(accounts.size() - 1, 0);
 
@@ -466,10 +605,7 @@ void Accounts::DeleteUser()
 		cout << "ERASED: " << accounts[selection].username;
 		accounts.erase(accounts.begin() + selection);
 	}
-	else
-	{
 
-	}
 	cout << endl << endl;
 	system("pause");
 }

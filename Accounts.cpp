@@ -96,6 +96,8 @@ void Accounts::SignUp()
 	class invalidUsernameLength{};
 	class passwordConfermationFail{};
 	class usernameAlreadyTaken{};
+	class invalidGeneralLength{};
+	class invalidStateLength{};
 
 	do
 	{
@@ -109,7 +111,32 @@ void Accounts::SignUp()
 
 			//error checking for minimum length for username
 			if(username.length() < 5 || username.length() > 25)throw invalidUsernameLength();
+			else
+			{
+				validUsername = true;
+			}
+		}
 
+		catch(usernameAlreadyTaken)
+		{
+			cout << "::ATTENTION:: Username already taken, "
+					 "please try again\n";
+		}
+
+		catch(invalidUsernameLength)
+		{
+			cout << "::ATTENTION:: Invalid username, must be between "
+					"5 and 25 characters, "
+					 "please try again\n\n";
+		}
+
+
+	}while(!validUsername);
+
+	do
+	{
+		try
+		{
 			cout << "Please enter a password: ";
 			getline(cin, password);
 
@@ -122,26 +149,108 @@ void Accounts::SignUp()
 			//error checking for account input
 			if(password != passwordConfirm)throw passwordConfermationFail();
 
+		}
+		catch(passwordConfermationFail)
+		{
+			cout << "::ATTENTION:: Passwords do not match, "
+					 "please try again\n";
+		}
+
+
+		catch(invalidPasswordLength)
+		{
+			cout << "::ATTENTION:: Invalid password, must be between "
+					"5 and 18 characters, "
+					 "please try again\n\n";
+		}
+	}while(password.length() < 5 || password.length() > 18 || password != passwordConfirm);
+
+
+	do
+	{
+		try
+		{
 			//input company name from user
 			cout << "Please enter in your company name: ";
 			getline(cin, companyName);
 
+			//error checking account from user
+			if(companyName.length() > 30 || (companyName.length() == 0))throw invalidGeneralLength();
+		}
+		catch(invalidGeneralLength)
+		{
+			cout << "::ATTENTION:: Invalid input, must be greater than"
+					" 0 characters, and less "
+					"than 30 characters, please try again\n\n";
+		}
+	}while(companyName.length() > 30 || companyName.length() == 0);
+
+	do
+	{
+		try
+		{
 			//input address from user
 			cout << "Please enter in your address (street address): ";
 			getline(cin, address);
 
+			//error checking account from user
+			if(address.length() > 30 || address.length() == 0)throw invalidGeneralLength();
+		}
+		catch(invalidGeneralLength)
+		{
+			cout << "::ATTENTION:: Invalid input, must be greater than"
+							" 0 characters, and less "
+							"than 30 characters, please try again\n\n";
+		}
+	}while(address.length() > 30 || address.length() == 0);
+
+	do
+	{
+		try
+		{
 			//input city from user
 			cout << "Please enter in your city: ";
 			getline(cin, city);
 
+			//error checking account from user
+			if(city.length() > 30 || city.length() == 0)throw invalidGeneralLength();
+		}
+		catch(invalidGeneralLength)
+		{
+			cout << "::ATTENTION:: Invalid input, must be greater than"
+						" 0 characters, and less "
+						"than 30 characters, please try again\n\n";
+		}
+	}while(city.length() > 30 || city.length() == 0);
+
+	do
+	{
+		try
+		{
 			//input state from user
 			cout << "Please enter in your state: ";
 			getline(cin, state);
 
-			//input zip from user
-			cout << "Please enter in your zip code: ";
-			zip = GetValidInt(99999, 0);
+			//error checking account from user
+			if (state.length() != 2)throw invalidStateLength();
+		}
+		catch(invalidStateLength)
+		{
+			cout << "::ATTENTION:: Invalid state input, must be 2"
+					" characters\n\n";
+		}
+	}while (state.length() != 2);
 
+	do
+	{
+		//input zip from user
+		cout << "Please enter in your zip code: ";
+		zip = GetValidInt(99999, 0);
+
+	}while(zip > 99999 || zip < 0);
+
+	do
+	{
 			//input interest from user
 			cout << "\nWhat is your interest in the company?\n";
 			cout << "1-- Very Interested\n"
@@ -164,7 +273,7 @@ void Accounts::SignUp()
 
 
 			cout << "\nAccount created! You may now log in\n";
-
+	}while(selection > 3 || selection < 0);
 			//creating new instance of accInfo struct to fill with data
 			accInfo nextAccount;
 
@@ -216,37 +325,9 @@ void Accounts::SignUp()
 			it = accounts.begin();
 
 			totalAccounts++;
-			validUsername = true;
 
-		}//END - try
-		catch(passwordConfermationFail)
-		{
-			cout << "::ATTENTION:: Passwords do not match, "
-					 "please try again\n";
-		}
 
-		catch(usernameAlreadyTaken)
-		{
-			cout << "::ATTENTION:: Username already taken, "
-					 "please try again\n";
-		}
-
-		catch(invalidUsernameLength)
-		{
-			cout << "::ATTENTION:: Invalid username, must be between "
-					"5 and 25 characters, "
-					 "please try again\n\n";
-		}
-
-		catch(invalidPasswordLength)
-		{
-			cout << "::ATTENTION:: Invalid password, must be between "
-					"5 and 18 characters, "
-					 "please try again\n\n";
-		}
-	}while(!validUsername);
-
-}//END - SignUp
+}//END - try
 
 
 //ACCESSORS////////////////////////////////////////////////////////////////////
