@@ -237,10 +237,11 @@ void Accounts::SearchTheirInterest()
 			"1--Very Interested\n"
 			"2--Somewhat Interested\n"
 			"3--Not Interested\n"
+			"4--Never Call Again\n"
 			"0--Return to Previous Menu\n\n"
 			"Selection: ";
 
-	response = GetValidInt(3, 0);
+	response = GetValidInt(4, 0);
 
 	while (response != 0)
 	{
@@ -251,6 +252,8 @@ void Accounts::SearchTheirInterest()
 			case 2: searchItem = "somewhat interested";
 				break;
 			case 3: searchItem = "not interested";
+				break;
+			case 4: searchItem = "never call again";
 				break;
 			case 0:
 				break;
@@ -289,6 +292,21 @@ void Accounts::SearchTheirInterest()
 			system("pause");
 		}
 		else if (response == 3)
+		{
+			for (unsigned int index = 0; index < accounts.size(); index++)
+			{
+				if (accounts[index].theirInterest == searchItem && accounts[index].adminStatus != 1)
+				{
+					cout << "Username: " << accounts[index].username << endl;
+					cout << "Company Name: " << accounts[index].name << endl << endl;
+					count++;
+				}
+			}
+			cout << "\nNumber of users with interest '" << searchItem << "'= "
+					<< count << endl << endl;
+			system("pause");
+		}
+		else if (response == 4)
 		{
 			for (unsigned int index = 0; index < accounts.size(); index++)
 			{

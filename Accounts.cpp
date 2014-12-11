@@ -256,9 +256,10 @@ void Accounts::SignUp()
 			cout << "1-- Very Interested\n"
 					"2-- Somewhat Interested\n"
 					"3-- Not Interested\n"
+					"4-- Never Call Again\n"
 					"Selection: ";
 
-			selection = GetValidInt(3,  0);
+			selection = GetValidInt(4,  0);
 
 			switch (selection)
 			{
@@ -268,12 +269,14 @@ void Accounts::SignUp()
 					   break;
 				case 3: theirInterest = "not interested";
 					   break;
+				case 4: theirInterest = "never call again";
+					break;
 				default: cout << "***INVALID INPUT***";
 			}
 
 
 			cout << "\nAccount created! You may now log in\n";
-	}while(selection > 3 || selection < 0);
+	}while(selection > 4 || selection < 0);
 			//creating new instance of accInfo struct to fill with data
 			accInfo nextAccount;
 
