@@ -29,13 +29,14 @@ void Accounts::AdminSelection()
 {
 	int selection;
 
+	//Prints the menu for the admin
+	AdminPrint();
+
+	selection = GetValidInt(9, 0);
+
 	while (selection != 0)
 	{
 		cout << endl << endl;
-		//Prints the menu for the admin
-		AdminPrint();
-
-		selection = GetValidInt(9, 0);
 
 		switch(selection)
 		{
@@ -59,6 +60,11 @@ void Accounts::AdminSelection()
 			break;
 		default: cout << "***INVALID INPUT****";
 		}
+
+		//Prints the menu for the admin
+		AdminPrint();
+
+		selection = GetValidInt(9, 0);
 	}
 }
 /******************************************************************************
@@ -85,14 +91,13 @@ void Accounts::AccountOptionsSelection()
 {
 	int accountSelection;
 
+	cout << endl << endl;
+	//Prints the menu for the admin
+	AccountOptionsMenu();
+
+	accountSelection = GetValidInt(4, 0);
 	while (accountSelection != 0)
 	{
-		cout << endl << endl;
-		//Prints the menu for the admin
-		AccountOptionsMenu();
-
-		accountSelection = GetValidInt(4, 0);
-
 		switch(accountSelection)
 		{
 		case 0:
@@ -108,6 +113,12 @@ void Accounts::AccountOptionsSelection()
 		default: cout << "***INVALID INPUT****";
 		}
 	}
+
+	cout << endl << endl;
+	//Prints the menu for the admin
+	AccountOptionsMenu();
+
+	accountSelection = GetValidInt(4, 0);
 }
 
 /******************************************************************************
