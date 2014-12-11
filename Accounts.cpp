@@ -326,6 +326,8 @@ void Accounts::SignUp()
 
 			totalAccounts++;
 
+			system("pause");
+
 
 }//END - try
 

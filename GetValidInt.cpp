@@ -22,6 +22,12 @@ int GetValidInt(int upper, int lower)
 				 << upper << ": ";
 			invalid = true;
 		}
+		else if(response.length() == 0)
+		{
+			cout << "\n\nERROR!\n\nMust enter an input!:";
+			cout << "\n\nSelection: ";
+			invalid = true;
+		}
 	}while(invalid);
 
 	intResponse = atoi(response.c_str());

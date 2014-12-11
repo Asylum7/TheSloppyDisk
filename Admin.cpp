@@ -377,14 +377,14 @@ void Accounts::EditUser()
 	AdminMenuHeader();
 	int selection;
 
+	//Calls menu functions
+	EditUserMenu();
+
+	//Calls get Valid Int Function
+	selection = GetValidInt(2, 0);
+
 	while (selection != 0)
 	{
-		//Calls menu functions
-		EditUserMenu();
-
-		//Calls get Valid Int Function
-		selection = GetValidInt(2, 0);
-
 		switch(selection)
 		{
 			case 0:
@@ -395,9 +395,13 @@ void Accounts::EditUser()
 				break;
 			default: cout << "***INVALID INPUT****";
 		}
+
+		//Calls menu functions
+		EditUserMenu();
+
+		//Calls get Valid Int Function
+		selection = GetValidInt(2, 0);
 	}
-	cout << endl << endl;
-	system("pause");
 }
 /******************************************************************************
  * FUNCTION - Edit Interest
@@ -414,8 +418,11 @@ void Accounts::EditInterest()
 
 	for (unsigned int index = 0; index < accounts.size(); index++)
 	{
-		cout << accounts[index].username << endl;
-		cout << accounts[index].ourInterest << endl << endl;
+		if (accounts[index].adminStatus != 1)
+		{
+			cout << accounts[index].username << endl;
+			cout << accounts[index].ourInterest << endl << endl;
+		}
 	}
 
 	//Takes in name from user to search
@@ -426,7 +433,7 @@ void Accounts::EditInterest()
 	{
 		while(i < accounts.size() && !sameUserName)
 		{
-			if(accounts[i].username == userName)
+			if(accounts[i].username == userName && (accounts[i].adminStatus =! 1))
 			{
 				sameUserName = true;
 				break;
@@ -541,6 +548,9 @@ void Accounts::EditAdminStatus()
 			cout << "Would you like to demote this admin to a user? (Y or N)\n";
 			cout << "Response: ";
 			cin.get(response);
+			cin.ignore(1000, '\n');
+
+			response = toupper(response);
 
 			switch (response)
 			{
@@ -557,6 +567,9 @@ void Accounts::EditAdminStatus()
 			cout << "Would you like to promote this user to a admin? (Y or N)\n";
 			cout << "Response: ";
 			cin.get(response);
+			cin.ignore(1000, '\n');
+
+			response = toupper(response);
 
 			switch (response)
 			{
